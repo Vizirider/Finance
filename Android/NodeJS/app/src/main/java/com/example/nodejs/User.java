@@ -29,6 +29,9 @@ public class User implements Parcelable {
         dest.writeInt(is_deleted);
         dest.writeInt(is_admin);
         dest.writeString(default_site_id);
+        dest.writeString(account_number);
+        dest.writeString(currency);
+        dest.writeInt(balance);
     }
 
     public User() {
@@ -47,6 +50,9 @@ public class User implements Parcelable {
         is_deleted = in.readInt();
         is_admin = in.readInt();
         default_site_id = in.readString();
+        account_number = in.readString();
+        currency = in.readString();
+        balance = in.readInt();
     }
 
     public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
@@ -91,6 +97,36 @@ public class User implements Parcelable {
     private int is_deleted;
     private int is_admin;
     private String default_site_id;
+
+    public String getAccount_number() {
+        return account_number;
+    }
+
+    public void setAccount_number(String account_number) {
+        this.account_number = account_number;
+    }
+
+    private String account_number;
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    private String currency;
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
+    private Integer balance;
 
     public Integer getId() {
         return id;

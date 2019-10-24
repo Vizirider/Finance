@@ -36,8 +36,8 @@ public class UsersRecycleViewAdapter extends RecyclerView.Adapter<UsersRecycleVi
     @Override
     public void onBindViewHolder(ViewHolder holder, int i) {
         User user = gson.fromJson(mData.get(i), User.class);
-        holder.userName.setText(user.getName());
-        holder.userEmail.setText(user.getEmail());
+        holder.userName.setText(user.getName() + " " + user.getAccount_number());
+        holder.userEmail.setText(user.getBalance() + " " + user.getCurrency());
     }
 
     // Total number of rows
