@@ -12,19 +12,21 @@ public class TransactionItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(transaction);
-        dest.writeString(product_category);
-        dest.writeInt(income_outcome);
+        dest.writeString(income_outcome);
         dest.writeString(currency);
         dest.writeString(Date);
+        dest.writeString(category_name);
+
 
     }
 
     private TransactionItem(Parcel in) {
         transaction = in.readInt();
-        product_category = in.readString();
-        income_outcome = in.readInt();
+        income_outcome = in.readString();
         currency = in.readString();
         Date = in.readString();
+        category_name = in.readString();
+
 
     }
     public static final Parcelable.Creator<TransactionItem> CREATOR = new Parcelable.Creator<TransactionItem>() {
@@ -38,8 +40,8 @@ public class TransactionItem implements Parcelable {
     };
 
     private Integer transaction;
-    private String product_category;
-    private Integer income_outcome;
+    private String category_name;
+    private String income_outcome;
     private String currency;
     private String Date;
 
@@ -48,19 +50,19 @@ public class TransactionItem implements Parcelable {
 
     public void setTransaction(Integer transaction) { this.transaction = transaction; }
 
-    public String getProduct_category() {
-        return product_category;
+    public String getCategory_name() {
+        return category_name;
     }
 
-    public void setProduct_category(String product_category) {
-        this.product_category = product_category;
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 
-    public Integer getIncome_outcome() {
+    public String getIncome_outcome() {
         return income_outcome;
     }
 
-    public void setIncome_outcome(Integer income_outcome) {
+    public void setIncome_outcome(String income_outcome) {
         this.income_outcome = income_outcome;
     }
 

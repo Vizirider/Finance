@@ -23,7 +23,9 @@ import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.utils.CatalogueRecycleViewAdapter;
 import com.example.nodejs.utils.TransactionRecycleViewAdapter;
 
+import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -34,8 +36,8 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
     ITSHBackend myAPI;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     CatalogueRecycleViewAdapter adapter;
-    Calendar currentDate;
-    int currentDay, currentMonth, currentYear;
+    Date currentDate;
+    int currentDay, currentMonth, currentYear, selectedCurrency;
 
     private void cancelUpdate() {
         Intent myIntent = new Intent(TransactionAddActivity.this, FinanceTransactionActivity.class);
@@ -54,49 +56,13 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_add);
 
-        final EditText seller = findViewById(R.id.sellerEditText);
+        final EditText amount = findViewById(R.id.sellerEditText);
         final Spinner category = findViewById(R.id.categorySpinner);
-        final Spinner site = findViewById(R.id.siteSpinner);
-        final EditText address = findViewById(R.id.addressEditText);
-        final EditText discountRate = findViewById(R.id.discountEditText);
-        final TextView validFrom = findViewById(R.id.validFromEditText);
-        final TextView validTill = findViewById(R.id.validTillEditText);
-        final CheckBox active = findViewById(R.id.activeCheckBox);
-        final EditText url = findViewById(R.id.urlEditText);
-        final EditText description = findViewById(R.id.descriptionEditText);
-        final Button resetFromDateButton = findViewById(R.id.resetFromDateButton);
-        final Button resetTillDateButton = findViewById(R.id.resetTillDateButton);
+        final Spinner currency = findViewById(R.id.categorySpinner2);
 
-        String[] categoriesStringArray = getResources().getStringArray(R.array.category_id_hun);
+        String[] categoriesStringArray = getResources().getStringArray(R.array.currency);
 
-        currentDate = Calendar.getInstance();
-
-        currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
-        currentMonth = currentDate.get(Calendar.MONTH) + 1;
-        currentYear = currentDate.get(Calendar.YEAR);
-
-        validFrom.setText(String.format("%d-%02d-%02d", currentYear, currentMonth, currentDay));
-
-        validFrom.setOnClickListener(v -> {
-            DatePickerDialog datePickerDialog = new DatePickerDialog(TransactionAddActivity.this, (view, year, month, dayOfMonth) -> {
-                month++;
-                validFrom.setText(String.format("%d-%02d-%02d", year, month, dayOfMonth));
-            }, currentYear, currentMonth, currentDay);
-            datePickerDialog.show();
-        });
-        resetFromDateButton.setOnClickListener(v -> validFrom.setText(""));
-
-        validTill.setText(String.format("%d-%02d-%02d", currentYear, currentMonth, currentDay));
-
-        validTill.setOnClickListener(v -> {
-            DatePickerDialog datePickerDialog1 = new DatePickerDialog(TransactionAddActivity.this, (view, year, month, dayOfMonth) -> {
-                month++;
-                validTill.setText(String.format("%d-%02d-%02d", year, month, dayOfMonth));
-            }, currentYear, currentMonth, currentDay);
-            datePickerDialog1.show();
-        });
-
-        resetTillDateButton.setOnClickListener(v -> validTill.setText(""));
+        currentDate = Calendar.getInstance().getTime();
 
         Retrofit retrofit = RetrofitClient.getInstance();
         myAPI = retrofit.create(ITSHBackend.class);
@@ -113,19 +79,18 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
         cancelCatalogue.setOnClickListener(v -> cancelUpdate());
 
         newCatalogueButton.setOnClickListener(v -> {
-            String selectedCategory = "";
-            if (isFieldsFilled(seller, category, site, address, discountRate))
-                selectedCategory = categoriesStringArray[category.getSelectedItemPosition()];
-                createCatalogueItem(seller.getText().toString(), selectedCategory, site.getSelectedItem().toString(),
-                         address.getText().toString(), discountRate.getText().toString(), validFrom.getText().toString(),
-                        validTill.getText().toString(), active.isChecked(), url.getText().toString(), description.getText().toString());
+            Integer selectedCategory;
+            String selectedCurrency;
+
+                selectedCategory = category.getSelectedItemPosition();
+                selectedCurrency = categoriesStringArray[currency.getSelectedItemPosition()];
+                createCatalogueItem(selectedCategory, amount.getText().toString(), selectedCurrency, currentDate.toString());
         });
     }
 
-    private boolean isFieldsFilled(EditText seller, Spinner category, Spinner site, EditText address, EditText discountRate){
-        if (seller.getText().toString().equals("") || category.getSelectedItem().toString().equals("") ||
-                site.getSelectedItem().toString().equals("") || address.getText().toString().equals("") ||
-                discountRate.getText().toString().equals("")){
+    private boolean isFieldsFilled(EditText amount, Spinner category, Spinner currency){
+        if (amount.getText().toString().equals("") || category.getSelectedItem().toString().equals("") ||
+                currency.getSelectedItem().toString().equals("") ){
             Toast.makeText(TransactionAddActivity.this, "Fields cannot be empty!", Toast.LENGTH_LONG).show();
             return false;
         } else {
@@ -133,22 +98,20 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
         }
     }
 
-    private void createCatalogueItem(final String seller, final String category, final String site, final String address, final String discountRate,
-                                     final String validFrom, final String validTill, final Boolean active, final String url, final String description){
+    private void createCatalogueItem(final Integer category, final String amount, final String currency,final String currentDate){
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(TransactionAddActivity.this);
         String token = settings.getString("token", "");
         String bearerToken = getString(R.string.bearer_token) + " " + token;
 
-                            compositeDisposable.add(myAPI.createCatalogueItem(bearerToken, seller, category, site, address, discountRate, validFrom, validTill,
-                                    active, url, description)
+                            compositeDisposable.add(myAPI.createTransaction(token, category, amount, currency, currentDate)
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(response -> {
-                                        if (response.code() >= 200 && response.code() < 300){
-                                            Toast.makeText(TransactionAddActivity.this, "CatalogueItem added successfully!", Toast.LENGTH_SHORT).show();
+                                       /* if (response.code() >= 200 && response.code() < 300){
+                                            Toast.makeText(TransactionAddActivity.this, "TransactionItem added successfully!", Toast.LENGTH_SHORT).show();
                                         } else {
                                             Toast.makeText(TransactionAddActivity.this, "" + response.code(), Toast.LENGTH_SHORT).show();
-                                        }
+                                        } */
                                     }));
     }
 }

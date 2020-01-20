@@ -29,7 +29,7 @@ public class TransactionRecycleViewAdapter extends RecyclerView.Adapter<Transact
     // Inflates the row layout-w330dp from 'xml' when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.catalogue_card_layout, parent, false);
+        View view = mInflater.inflate(R.layout.transaction_card_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -37,12 +37,15 @@ public class TransactionRecycleViewAdapter extends RecyclerView.Adapter<Transact
     @Override
     public void onBindViewHolder(ViewHolder holder, int i) {
         TransactionItem TransactionItemElement = gson.fromJson(mData.get(i), TransactionItem.class);
-        Integer transactionItemElementincome_outcome = TransactionItemElement.getIncome_outcome();
+        String transactionItemElementincome_outcome = TransactionItemElement.getIncome_outcome();
         String transactionItemElementCurrency = TransactionItemElement.getCurrency();
         String transactionItemElementDate = TransactionItemElement.getDate();
+        String transactionItemElementCategory = TransactionItemElement.getCategory_name();
         holder.transactionItemIncomeOutcome.setText(transactionItemElementincome_outcome);
         holder.transactionItemCurrency.setText(transactionItemElementCurrency);
         holder.transactionItemDate.setText(transactionItemElementDate);
+        holder.transactionCategory.setText(transactionItemElementCategory);
+
     }
 
     // Total number of rows
@@ -60,12 +63,14 @@ public class TransactionRecycleViewAdapter extends RecyclerView.Adapter<Transact
         TextView transactionItemIncomeOutcome;
         TextView transactionItemCurrency;
         TextView transactionItemDate;
+        TextView transactionCategory;
 
         ViewHolder(View itemView) {
             super(itemView);
-            transactionItemIncomeOutcome = itemView.findViewById(R.id.cardNameView);
-            transactionItemCurrency = itemView.findViewById(R.id.cardAddressView);
-            transactionItemDate = itemView.findViewById(R.id.cardDiscountView);
+            transactionItemIncomeOutcome = itemView.findViewById(R.id.income_outcome);
+            transactionItemCurrency = itemView.findViewById(R.id.currency);
+            transactionItemDate = itemView.findViewById(R.id.date);
+            transactionCategory = itemView.findViewById(R.id.category);
             itemView.setOnClickListener(this);
         }
 

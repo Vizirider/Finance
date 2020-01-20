@@ -56,19 +56,17 @@ public interface ITSHBackend {
                                                   @Field("password") String password,
                                                   @Field("defaultSite") String default_site);
 
-    @FormUrlEncoded
     @GET("/api/v1/transaction")
     Observable<Response<JsonObject>> getTransaction(@Header("Authorization") String token );
 
-    @FormUrlEncoded
     @GET("/api/v1/sumtransaction")
     Observable<Response<JsonObject>> sumTransaction(@Header("Authorization") String token );
 
     @FormUrlEncoded
     @POST("/api/v1/transaction")
     Observable<Response<JsonObject>> createTransaction(@Header("Authorization") String token,
-                                                       @Field("product_category") String category,
-                                                       @Field("income_outcome") Integer income_outcome,
+                                                       @Field("product_category") Integer category,
+                                                       @Field("income_outcome") String income_outcome,
                                                        @Field("currency") String currency,
                                                        @Field("Date") String Date);
 

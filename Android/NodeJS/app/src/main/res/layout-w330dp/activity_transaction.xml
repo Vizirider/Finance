@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <android.support.v7.widget.RecyclerViewTransaction
+            android:id="@+id/recyclerViewTransaction"
             android:layout_width="0dp"
             android:layout_height="450dp"
             android:layout_marginStart="8dp"
@@ -23,10 +23,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        </android.support.v7.widget.RecyclerView>
+        </android.support.v7.widget.RecyclerViewTransaction>
 
         <Button
-            android:id="@+id/updateListButton"
+            android:id="@+id/updateListTransactionButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="110dp"
             android:layout_height="55dp"
@@ -76,10 +76,10 @@
             android:textColorLink="@color/colorAccent"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateListButton" />
+            app:layout_constraintTop_toBottomOf="@+id/updateListTransactionButton" />
 
         <TextView
-            android:id="@+id/filterTextView1"
+            android:id="@+id/filterTextViewTransaction1"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
@@ -94,7 +94,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <TextView
-            android:id="@+id/filterTextView2"
+            android:id="@+id/filterTextViewTransaction2"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
@@ -109,7 +109,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <TextView
-            android:id="@+id/filterTextView3"
+            android:id="@+id/filterTextViewTransaction3"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
@@ -124,7 +124,7 @@
             app:layout_constraintTop_toBottomOf="@+id/filterTextView1" />
 
         <TextView
-            android:id="@+id/filterTextView4"
+            android:id="@+id/filterTextViewTransaction4"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
@@ -139,7 +139,7 @@
             app:layout_constraintTop_toBottomOf="@+id/filterTextView2" />
 
         <TextView
-            android:id="@+id/filterTextView5"
+            android:id="@+id/filterTextViewTransaction5"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"

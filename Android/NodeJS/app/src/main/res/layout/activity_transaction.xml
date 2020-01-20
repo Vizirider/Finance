@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
-    tools:context=".catalogueActivities.CatalogueActivity">
+    tools:context=".transactionActivities.TransactionActivity">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/recyclerViewTransaction"
             android:layout_width="0dp"
             android:layout_height="350dp"
             android:layout_marginStart="8dp"
@@ -28,7 +28,7 @@
         </android.support.v7.widget.RecyclerView>
 
         <Button
-            android:id="@+id/updateListButton"
+            android:id="@+id/updateListTransactionButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="110dp"
             android:layout_height="55dp"
@@ -41,19 +41,6 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <Button
-            android:id="@+id/siteDialogButton"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="110dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/site_list"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline5"
-            app:layout_constraintTop_toBottomOf="@+id/catalogueDialogButton" />
-
-        <Button
             android:id="@+id/catalogueDialogButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="110dp"
@@ -61,7 +48,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="80dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/category_list"
+            android:text="@string/sum_transaction"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
@@ -78,10 +65,10 @@
             android:textColorLink="@color/colorAccent"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateListButton" />
+            app:layout_constraintTop_toBottomOf="@+id/updateListTransactionButton" />
 
         <TextView
-            android:id="@+id/filterTextView1"
+            android:id="@+id/filterTextViewTransaction1"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
@@ -96,7 +83,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <TextView
-            android:id="@+id/filterTextView2"
+            android:id="@+id/filterTextViewTransaction2"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
@@ -111,7 +98,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <TextView
-            android:id="@+id/filterTextView3"
+            android:id="@+id/filterTextViewTransaction3"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
@@ -126,7 +113,7 @@
             app:layout_constraintTop_toBottomOf="@+id/filterTextView1" />
 
         <TextView
-            android:id="@+id/filterTextView4"
+            android:id="@+id/filterTextViewTransaction4"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
@@ -141,7 +128,7 @@
             app:layout_constraintTop_toBottomOf="@+id/filterTextView2" />
 
         <TextView
-            android:id="@+id/filterTextView5"
+            android:id="@+id/filterTextViewTransaction5"
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"

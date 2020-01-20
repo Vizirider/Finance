@@ -14,6 +14,8 @@
     <string name="update_list">Lista frissítése</string>
 
     <string name="seller">Eladó:</string>
+    <string name="amount">Összeg:</string>
+    <string name="currency">Árfolyam:</string>
     <string name="category_id">Kategória:</string>
     <string name="site_id">Telephely:</string>
     <string name="address">Cím:</string>
@@ -40,6 +42,7 @@
     <string name="choose_a_site">Telephely választás</string>
     <string name="site_list">Telephely lista</string>
     <string name="category_list">Kategória lista</string>
+    <string name="sum_transaction">Tranzakció összeg</string>
     <string name="choose_a_category">Kategória választása</string>
     <string name="create_new_element">Új elem létrehozása</string>
     <string name="delete">Törlés</string>

@@ -8,9 +8,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.nodejs.CatalogueItem;
 import com.example.nodejs.R;
 import com.example.nodejs.TransactionItem;
 import com.example.nodejs.retrofit.ITSHBackend;
@@ -28,9 +26,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
 public class TransactionItemViewActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -51,7 +47,7 @@ public class TransactionItemViewActivity extends AppCompatActivity implements On
         myAPI = retrofit.create(ITSHBackend.class);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(TransactionItemViewActivity.this);
-        final TransactionItem transactionItem = gson.fromJson(settings.getString("catalogueItem","{}"), TransactionItem.class);
+        final TransactionItem transactionItem = gson.fromJson(settings.getString("transaction","{}"), TransactionItem.class);
         String token = settings.getString("token", " ");
 
         TextView sellerTextView = findViewById(R.id.sellerTextView);
@@ -66,7 +62,7 @@ public class TransactionItemViewActivity extends AppCompatActivity implements On
 
         sellerTextView.setText(transactionItem.getIncome_outcome());
         categoryTextView.setText(transactionItem.getCurrency());
-        siteTextView.setText(transactionItem.getProduct_category());
+        siteTextView.setText(transactionItem.getCategory_name());
         addressTextView.setText(transactionItem.getDate());
 
         cancelCatalogueItemButton.setOnClickListener(v -> finish());

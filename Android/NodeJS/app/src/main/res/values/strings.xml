@@ -23,6 +23,8 @@
     <string name="applied_site_filters">Applied site_id filters:</string>
 
     <string name="seller">Seller:</string>
+    <string name="amount">Amount:</string>
+    <string name="currency">Currency:</string>
     <string name="category_id">Category:</string>
     <string name="site_id">Site name:</string>
     <string name="address">Address:</string>
@@ -41,6 +43,7 @@
     <string name="add_transaction_element">Add transaction element</string>
     <string name="choose_a_site">Choose a site_id</string>
     <string name="category_list">Category list</string>
+    <string name="sum_transaction">Sum transaction</string>
     <string name="choose_a_category">Choose a category_id</string>
     <string name="create_new_element">Create new element</string>
     <string name="delete">delete</string>
@@ -138,6 +141,14 @@
         <item>Personal education</item>
         <item>Event organization</item>
         <item>Household, tools</item>
+    </string-array>
+    <string-array name="currency">
+        <item>HUF</item>
+        <item>USD</item>
+        <item>EUR</item>
+        <item>CHF</item>
+        <item>CNY</item>
+        <item>JPY</item>
     </string-array>
     <string-array name="locale">
         <item>HU</item>
