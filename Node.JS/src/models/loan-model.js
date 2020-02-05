@@ -1,13 +1,13 @@
 import { CATEGORIES } from '../shared/constansts';
 import { conn } from '../../app';
 
-const SELECT_PROPERTIES_QUERY_PART = `SELECT loan.loan, loan.amount, loan.currency, loan.Date`;
-const INNER_JOIN_QUERY_PART = `FROM loan INNER JOIN category ON loan.product_category = category.id`;
+const SELECT_PROPERTIES_QUERY_PART = `SELECT loan.loan, loan.amount, loan.currency, loancategory.percentage, loan.Date`;
+const INNER_JOIN_QUERY_PART = `FROM loan INNER JOIN loancategory ON loan.product_category = loancategory.loancategory`;
 
 
 export default class Loan {
     constructor(loanItem) {
-        this.product_category = CATEGORIES.indexOf(loanItem.product_category);
+        this.product_category = loanItem.product_category;
         this.amount = loanItem.amount;
         this.currency = loanItem.currency;
         this.Date = new Date(loanItem.Date);
@@ -15,7 +15,7 @@ export default class Loan {
 
     static getAllLoanItems(res) {
         conn.query(
-            `${SELECT_PROPERTIES_QUERY_PART}, category.name AS category_name
+            `${SELECT_PROPERTIES_QUERY_PART}, loancategory.name AS category_name
                 ${INNER_JOIN_QUERY_PART}`,
             [],
             function(err, result) {

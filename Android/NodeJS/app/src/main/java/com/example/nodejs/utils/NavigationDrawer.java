@@ -14,6 +14,7 @@ import com.example.nodejs.adminActivities.ListAllUsersActivity;
 import com.example.nodejs.catalogueActivities.DiscountCatalogueActivity;
 import com.example.nodejs.LoginActivity;
 import com.example.nodejs.R;
+import com.example.nodejs.loanActivities.FinanceLoanActivity;
 import com.example.nodejs.retrofit.ITSHBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.User;
@@ -139,7 +140,8 @@ public class NavigationDrawer {
                         new PrimaryDrawerItem().withIdentifier(1).withName(R.string.main_menu),
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withIdentifier(2).withName(R.string.discount_catalogue),
-                        new PrimaryDrawerItem().withIdentifier(3).withName(R.string.finance_transaction)
+                        new PrimaryDrawerItem().withIdentifier(3).withName(R.string.finance_transaction),
+                        new PrimaryDrawerItem().withIdentifier(4).withName(R.string.finance_loan)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     // do something with the clicked item
@@ -171,19 +173,28 @@ public class NavigationDrawer {
                                 break;
                             }
                         case 4:
+                            if (callingActivity.getLocalClassName().equals("FinanceLoanActivity")){
+                                drawer.setSelection(-1);
+                                break;
+                            } else {
+                                startActivity(FinanceLoanActivity.class);
+                                drawer.closeDrawer();
+                                break;
+                            }
+                        case 5:
                             startActivity(ListAllUsersActivity.class);
                             drawer.closeDrawer();
                             break;
 
-                        case 5:
+                        case 6:
                             startActivity(UpdateActivity.class);
                             drawer.closeDrawer();
                             break;
-                        case 6:
+                        case 7:
                             deleteUser(user.getEmail(), token);
                             break;
 
-                        case 7:
+                        case 8:
                             logout();
                             break;
                     }
@@ -194,19 +205,19 @@ public class NavigationDrawer {
                 .build();
 
         if (user.getIs_admin() == 1){
-            PrimaryDrawerItem listAllUsersDrawerItem = new PrimaryDrawerItem().withIdentifier(4).withName("(Admin) List all users");
+            PrimaryDrawerItem listAllUsersDrawerItem = new PrimaryDrawerItem().withIdentifier(5).withName("(Admin) List all users");
             drawer.addItem(listAllUsersDrawerItem);
         }
 
-        SecondaryDrawerItem updateUserDrawerItem = new SecondaryDrawerItem().withIdentifier(5).withName(callingActivity.getString(R.string.update_info));
+        SecondaryDrawerItem updateUserDrawerItem = new SecondaryDrawerItem().withIdentifier(6).withName(callingActivity.getString(R.string.update_info));
         drawer.addStickyFooterItem(updateUserDrawerItem);
 
-        SecondaryDrawerItem deleteUserDrawerItem = new SecondaryDrawerItem().withIdentifier(6).withName(callingActivity.getString(R.string.delete_user));
+        SecondaryDrawerItem deleteUserDrawerItem = new SecondaryDrawerItem().withIdentifier(7).withName(callingActivity.getString(R.string.delete_user));
         drawer.addStickyFooterItem(deleteUserDrawerItem);
 
         drawer.addStickyFooterItem(new DividerDrawerItem());
 
-        SecondaryDrawerItem logoutDrawerItem = new SecondaryDrawerItem().withIdentifier(7).withName(callingActivity.getString(R.string.logout));
+        SecondaryDrawerItem logoutDrawerItem = new SecondaryDrawerItem().withIdentifier(8).withName(callingActivity.getString(R.string.logout));
         drawer.addStickyFooterItem(logoutDrawerItem);
 
         return drawer;

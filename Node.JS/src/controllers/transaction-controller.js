@@ -36,7 +36,7 @@ export function sum_all_transaction_items(req, res) {
             res.status(400).send(err);
             return;
         } else {
-            res.json({ transaction });
+            res.json ({ transaction });
             return;
         }
     });

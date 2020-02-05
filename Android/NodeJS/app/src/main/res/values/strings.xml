@@ -39,20 +39,25 @@
 
     <string name="catalogue">Catalogue</string>
     <string name="transaction">Transaction</string>
+	<string name="loan">Loan</string>
     <string name="add_catalogue_element">Add catalogue element</string>
     <string name="add_transaction_element">Add transaction element</string>
+	<string name="add_loan_element">Add loan element</string>
     <string name="choose_a_site">Choose a site_id</string>
     <string name="category_list">Category list</string>
     <string name="sum_transaction">Sum transaction</string>
+	<string name="sum_loan">Sum loan</string>
     <string name="choose_a_category">Choose a category_id</string>
     <string name="create_new_element">Create new element</string>
     <string name="delete">delete</string>
     <string name="discount_catalogue">Discount catalogue</string>
     <string name="finance_transaction">Finance transaction</string>
+    <string name="finance_loan">Finance loan</string>
     <string name="select_site">Select site_id</string>
     <string name="select_category">Select category_id</string>
     <string name="catalogue_retrieve_successful">Catalogue retrieve successful</string>
     <string name="transaction_retrieve_successful">Transaction retrieve successful</string>
+    <string name="loan_retrieve_successful">Loan retrieve successful</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="e_mail">e-mail:</string>

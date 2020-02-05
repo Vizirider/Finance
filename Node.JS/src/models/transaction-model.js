@@ -31,7 +31,7 @@ export default class Transaction {
 
     static sumAllTransactionItems(res){
         conn.query(
-            `SELECT SUM(income_outcome) FROM transaction`,
+            `SELECT SUM(income_outcome) AS balance FROM transaction`,
             [],
             function(err, result) {
                 if (err) {

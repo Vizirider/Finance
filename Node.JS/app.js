@@ -43,7 +43,7 @@ app.use(config.appVersion, router);
 
 // START APPLICATION
 app.listen(config.appPort, () => {
-    console.log(`ITSH Restful API Running on Port ${config.appPort}...`);
+    console.log(`Finance software ${config.appPort}...`);
 });
 
 // DATABASE CONNECTION

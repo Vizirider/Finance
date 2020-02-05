@@ -18,10 +18,15 @@ import android.widget.Toast;
 
 import com.example.nodejs.retrofit.ITSHBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
+import com.example.nodejs.transactionActivities.TransactionActivity;
 import com.example.nodejs.utils.NavigationDrawer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.mikepenz.materialdrawer.Drawer;
+
+import org.json.JSONArray;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -92,8 +97,25 @@ public class HomeActivity extends AppCompatActivity {
         List<String> splitName = new ArrayList<>(Arrays.asList(user.getName().split(" ")));
 
         String nameToDisplay = splitName.get(splitName.size() - 1);
-        String newText = getString(R.string.welcome_onboard) + " " + nameToDisplay + "!";
-        welcomeText.setText(newText);
+
+        String bearerToken = getString(R.string.bearer_token) + " " + token;
+
+        myAPI = retrofit.create(ITSHBackend.class);
+        compositeDisposable.add(myAPI.sumTransaction(bearerToken)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> {
+                    if (response.code() >= 200 && response.code() < 300) {
+                        JsonArray allUsersJsonArray = response.body().getAsJsonArray("transaction");
+                        settings.edit().putString("transaction", gson.toJson(allUsersJsonArray)).apply();
+                        User.storeTokenIfChanged(this, bearerToken, response.headers().get("Authorization"));
+                        Toast.makeText(HomeActivity.this, allUsersJsonArray+ " HUF", Toast.LENGTH_LONG).show();
+                        String newText = getString(R.string.welcome_onboard) + " " + nameToDisplay + allUsersJsonArray +  " HUF !";
+                        welcomeText.setText(newText);
+                    } else {
+                        Toast.makeText(HomeActivity.this, response.code() + " " + response.errorBody().string(), Toast.LENGTH_LONG).show();
+                    }
+                }));
 
         hamburgerImageView.setOnClickListener(v -> drawer.openDrawer());
     }
