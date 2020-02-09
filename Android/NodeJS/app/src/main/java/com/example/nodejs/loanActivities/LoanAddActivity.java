@@ -104,7 +104,7 @@ public class LoanAddActivity extends AppCompatActivity implements LoanRecycleVie
         String token = settings.getString("token", "");
         String bearerToken = getString(R.string.bearer_token) + " " + token;
 
-                            compositeDisposable.add(myAPI.createTransaction(token, category, amount, currency, currentDate)
+                            compositeDisposable.add(myAPI.createLoan(token, category, amount, currency, currentDate)
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(response -> {

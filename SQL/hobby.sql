@@ -3,11 +3,9 @@
 -- https://www.phpmyadmin.net
 --
 -- Gép: localhost
--- Létrehozás ideje: 2019. Sze 26. 09:23
+-- Létrehozás ideje: 2020. Feb 09. 08:48
 -- Kiszolgáló verziója: 5.5.60-MariaDB
 -- PHP verzió: 5.4.16
-
--- DEFAULT USER PASSWORD: Almakarika01
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -41,37 +39,37 @@ CREATE TABLE IF NOT EXISTS `catalogue` (
   `uploaded_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `url` varchar(100) NOT NULL,
   `description` text
-) ENGINE=InnoDB AUTO_INCREMENT=270 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=utf8;
 
 --
 -- A tábla adatainak kiíratása `catalogue`
 --
 
 INSERT INTO `catalogue` (`id`, `seller`, `category_id`, `site_id`, `address`, `discount_rate`, `valid_from`, `valid_till`, `active`, `uploaded_at`, `url`, `description`) VALUES
-(1, '​Diófa Vendéglő', 1, 1, '6724 Szeged, Sárosi utca 2.', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/diofa.vendeglo.szeged/', NULL),
-(2, 'Radio Taxi', 2, 1, 'Szeged', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.radiotaxi-szeged.hu/', NULL),
-(3, 'Ezerjó Borszaküzlet', 1, 1, '6720 Szeged, Somogyu utca 11.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.ezerjo.hu/', NULL),
-(4, 'EZ Famous Amerikai étterem', 1, 1, '6722 Szeged, Ady tér 5.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/famousszeged/', NULL),
-(5, 'Garden Bistro', 1, 1, '6724 Szeged, Damjanich u. 7/A', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/Gardenetterem/', NULL),
-(6, 'Gogol Borszaküzlet', 1, 1, '6722 Szeged, Bolyai utca 13.', '15%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/gogolborszakuzlet/', NULL),
-(7, 'Kapca Cafe&Bistro', 1, 1, '6725 Szeged,  Rákóczi u. 2.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/kapca.cafe/', NULL),
-(8, 'Móres Bárkonyha', 1, 1, '6720 Szeged, Híd utca 6.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.moresbarkonyha.hu/', NULL),
-(9, 'Makkos Bistro', 1, 1, '6723 Szeged, Makkosházi krt 6.', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/Makkos-Bisztr%C3%B3-1188895331189603/', NULL),
-(10, 'Magyaros Ételbár', 1, 1, '6724 Szeged, Árkád bevásárlóközpont', '20%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/etelbar.magyaros/', NULL),
-(11, 'Palánta Salátabár', 1, 1, '6722 Szeged,  Gutenberg u. 5.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'palantasaladbar.hu/', NULL),
-(12, 'Pizza Futár', 1, 1, '6726 Szeged, Thököly u. 28', '15%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.pizzafutar.co.hu/', NULL),
-(13, 'Pizza-Pasta', 1, 1, '6720 Szeged, Klauzál tér 6.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/PizzaePasta.Szeged/', NULL),
-(14, 'I-Mediart', 4, 1, '6726 Szeged, Fő fasor 176. l/4', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.i-mediart.hu/', NULL),
-(15, 'Science Hotel', 6, 1, '6722 Szeged, Petőfi Sándor sgt 17.', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'sciencehotel.hu/', NULL),
-(16, 'Eubycar sofőrszolgálat', 2, 5, 'Budapest', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/eubycar/?ref=ts&amp;fref=ts', NULL),
-(17, 'Láng Autó Kft.', 2, 5, '1138 Budapest, Váci út 156.', '30%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.langauto.hu/', NULL),
+(1, '​Diófa Vendéglő', 1, 6, '8000 Székesfehérvár, Kadocsa u. 32/a', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'http://www.diofaetterem.hu/', NULL),
+(2, 'Bakony Taxi Egyesület', 2, 1, 'Veszprém', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'http://www.bakonytaxi.hu/', NULL),
+(3, 'Borháló Veszprém', 1, 1, '8200 Veszprém, Kossuth Lajos u. 5', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'https://www.borhalo.com/veszprem', NULL),
+(4, 'Johnny''s Bistro Veszprém', 1, 1, '8200 Veszprém\r\nKossuth Lajos u 21.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'http://www.johnnys.hu/veszprem/', NULL),
+(5, 'Fricska', 1, 1, '8200 Veszprém, Miklós u. 10', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'https://www.facebook.com/Fricskaetteremlakas/', NULL),
+(6, 'BORzsongó Veszprém', 1, 1, '8200 Veszprém, Szent István u. 43', '15%', NULL, NULL, 1, '2019-09-06 06:25:24', 'https://www.facebook.com/borzsongo/', NULL),
+(7, 'Pizzéria-Lucifer II. Söröző', 1, 1, '8200  Veszprém, Török Ignác u. 16', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'http://www.luciferpizzeria.hu/', NULL),
+(8, 'Móres Bárkonyha', 1, 7, '6720 Szeged, Híd utca 6.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.moresbarkonyha.hu/', NULL),
+(9, 'Makkos Bistro', 1, 7, '6723 Szeged, Makkosházi krt 6.', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/Makkos-Bisztr%C3%B3-1188895331189603/', NULL),
+(10, 'Magyaros Ételbár', 1, 7, '6724 Szeged, Árkád bevásárlóközpont', '20%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/etelbar.magyaros/', NULL),
+(11, 'Kertész Csárda', 1, 6, '8000 Székesfehérvár, Iszkaszentgyörgyi út 2.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'http://www.kerteszcsarda.hu/', NULL),
+(12, 'Salvator Bajor Étterem', 1, 6, '8000 Székesfehérvár, Ányos Pál u. 3.', '15%', NULL, NULL, 1, '2019-09-06 06:25:24', 'http://www.salvatoretterem.hu/', NULL),
+(13, 'Rosetta Étterem', 1, 6, '8000 Székesfehérvár, Szent István tér 14.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'https://rosetta.hu/', NULL),
+(14, 'Copy Fehérvár\r\n', 4, 6, '8000 Székesfehérvár, Palotai út 25.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'http://www.copyfehervar.hu/', NULL),
+(15, 'Decathlon', 6, 1, '8000 Székesfehérvár, Holland fasor 3.', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'https://www.decathlon.hu/', NULL),
+(16, 'Eubycar sofőrszolgálat', 2, 4, 'Budapest', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.facebook.com/eubycar/?ref=ts&amp;fref=ts', NULL),
+(17, 'Láng Autó Kft.', 2, 4, '1138 Budapest, Váci út 156.', '30%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.langauto.hu/', NULL),
 (18, 'PistiVisz', 2, 5, 'Budapest, Debrecen', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'pistivisz.webnode.hu/kapcsolat/', NULL),
 (19, 'Praktiker', 17, 5, 'Budapest, Debrecen, Szeged, Pécs', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.praktikerwebshop.hu/', NULL),
 (20, 'Indiso Speleo sóterápia', 3, 5, 'Budapest, Debrecen, Szeged', '15%', NULL, NULL, 1, '2019-09-06 06:25:24', ' indiso.hu/', NULL),
 (21, 'Postershop.hu ', 4, 5, 'Budapest, Debrecen és online', '10-15%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.postershop.hu/', NULL),
 (22, 'Deboti Vitorlás Sportegyesület', 5, 5, '3433 Nyékládháza, Zsálya utca 5.', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'deboti.iwk.hu/', NULL),
-(23, 'Fővárosi Cirkusz', 5, 5, '1146 Budapest, Állatkerti krt. 12/a.', '25%', NULL, NULL, 1, '2019-09-06 06:25:24', 'fnc.hu/', NULL),
-(24, 'Krea-Túra Hegymászás', 5, 5, '1112 Budapest, Kérő u. 6. FSZ.', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'krea-tura.hu/', NULL),
+(23, 'Fővárosi Cirkusz', 5, 4, '1146 Budapest, Állatkerti krt. 12/a.', '25%', NULL, NULL, 1, '2019-09-06 06:25:24', 'fnc.hu/', NULL),
+(24, 'Krea-Túra Hegymászás', 5, 4, '1112 Budapest, Kérő u. 6. FSZ.', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'krea-tura.hu/', NULL),
 (25, 'Aphrodite Hotel Zalakaros', 6, 5, '8749 Zalakaros, Sport u. 10.', '50%', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.wellnesshotelaphrodite.hu/', NULL),
 (26, 'Balneo Hotel Zsori  ', 6, 5, '3400 Mezőkövesd, Fülemüle utca ', 'egyéb', NULL, NULL, 1, '2019-09-06 06:25:24', 'www.balneohotel.hu/', NULL),
 (27, 'Balneum Hotel', 6, 5, '5350 Tiszafüred, Húszöles út 27. ', '10%', NULL, NULL, 1, '2019-09-06 06:25:24', 'balneum.hu/', NULL),
@@ -315,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Étel/Ital '),
+(1, 'Étel/Ital'),
 (2, 'Autó-Motor'),
 (3, 'Egészség'),
 (4, 'Fotó'),
@@ -336,24 +334,95 @@ INSERT INTO `category` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `loan`
+--
+
+CREATE TABLE IF NOT EXISTS `loan` (
+  `loan` int(11) NOT NULL,
+  `product_category` int(11) NOT NULL,
+  `amount` int(100) NOT NULL,
+  `currency` varchar(100) NOT NULL,
+  `Date` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- A tábla adatainak kiíratása `loan`
+--
+
+INSERT INTO `loan` (`loan`, `product_category`, `amount`, `currency`, `Date`) VALUES
+(1, 1, 10000, 'HUF', '2020-02-03');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `loancategory`
+--
+
+CREATE TABLE IF NOT EXISTS `loancategory` (
+  `loancategory` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `percentage` varchar(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- A tábla adatainak kiíratása `loancategory`
+--
+
+INSERT INTO `loancategory` (`loancategory`, `name`, `percentage`) VALUES
+(1, 'személyi kölcsönök', '13,8 %'),
+(2, 'lakáshitel', '4,6 %'),
+(3, 'lakásfelújítás', '8,1 %'),
+(4, 'autóvásárlás', '13,8 %'),
+(5, 'személyi kölcsön hitelkiváltásra', '13,8 %');
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `site`
 --
 
 CREATE TABLE IF NOT EXISTS `site` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- A tábla adatainak kiíratása `site`
 --
 
 INSERT INTO `site` (`id`, `name`) VALUES
-(1, 'SZEGED'),
+(1, 'VESZPRÉM'),
 (2, 'PÉCS'),
 (3, 'DEBRECEN'),
 (4, 'BUDAPEST'),
-(5, 'TELEPHELYTŐL FÜGGETLEN');
+(5, 'TELEPHELYTŐL FÜGGETLEN'),
+(6, 'SZÉKESFEHÉRVÁR'),
+(7, 'SZEGED');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `transaction`
+--
+
+CREATE TABLE IF NOT EXISTS `transaction` (
+  `transaction` int(11) NOT NULL,
+  `product_category` int(11) NOT NULL,
+  `income_outcome` int(100) NOT NULL,
+  `currency` varchar(100) NOT NULL,
+  `Date` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- A tábla adatainak kiíratása `transaction`
+--
+
+INSERT INTO `transaction` (`transaction`, `product_category`, `income_outcome`, `currency`, `Date`) VALUES
+(1, 1, 1500, 'HUF', '2019-10-13'),
+(2, 2, -20000, 'HUF', '2019-10-02'),
+(3, 3, 7600, 'HUF', '2019-10-22'),
+(4, 1, -4400, 'HUF', '2019-10-22'),
+(5, 1, 12500, 'HUF', '2020-02-02');
 
 -- --------------------------------------------------------
 
@@ -409,10 +478,29 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- A tábla indexei `loan`
+--
+ALTER TABLE `loan`
+  ADD PRIMARY KEY (`loan`);
+
+--
+-- A tábla indexei `loancategory`
+--
+ALTER TABLE `loancategory`
+  ADD PRIMARY KEY (`loancategory`);
+
+--
 -- A tábla indexei `site`
 --
 ALTER TABLE `site`
   ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`transaction`),
+  ADD KEY `FK_Category` (`transaction`);
 
 --
 -- A tábla indexei `user`
@@ -430,17 +518,32 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT a táblához `catalogue`
 --
 ALTER TABLE `catalogue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=270;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=251;
 --
 -- AUTO_INCREMENT a táblához `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
+-- AUTO_INCREMENT a táblához `loan`
+--
+ALTER TABLE `loan`
+  MODIFY `loan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT a táblához `loancategory`
+--
+ALTER TABLE `loancategory`
+  MODIFY `loancategory` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT a táblához `site`
 --
 ALTER TABLE `site`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT a táblához `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `transaction` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT a táblához `user`
 --

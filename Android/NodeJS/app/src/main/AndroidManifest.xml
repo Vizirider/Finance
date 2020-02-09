@@ -16,6 +16,8 @@
         <activity android:name=".userActivities.SetProfilePictureActivity" />
         <activity android:name=".catalogueActivities.DiscountCatalogueActivity" />
         <activity android:name=".transactionActivities.FinanceTransactionActivity" />
+        <activity android:name=".loanActivities.FinanceLoanActivity" />
+
         <activity
             android:name=".userActivities.ResetPasswordActivity"
             android:launchMode="singleInstance">
@@ -49,6 +51,8 @@
         <activity android:name=".catalogueActivities.CatalogueAddActivity" />
         <activity android:name=".transactionActivities.TransactionActivity" />
         <activity android:name=".transactionActivities.TransactionAddActivity" />
+        <activity android:name=".loanActivities.LoanActivity" />
+        <activity android:name=".loanActivities.LoanAddActivity" />
         <activity android:name=".userActivities.UpdateActivity" />
         <activity android:name=".HomeActivity" />
         <activity

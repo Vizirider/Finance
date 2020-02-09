@@ -137,13 +137,13 @@ public class LoanActivity extends AppCompatActivity implements LoanRecycleViewAd
             linearLayout.removeAllViews();
 
             myAPI = retrofit.create(ITSHBackend.class);
-            compositeDisposable.add(myAPI.getTransaction(bearerToken)
+            compositeDisposable.add(myAPI.getLoan(bearerToken)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response -> {
                         if (response.code() >= 200 && response.code() < 300) {
-                            JsonArray allUsersJsonArray = response.body().getAsJsonArray("transaction");
-                            settings.edit().putString("transaction", gson.toJson(allUsersJsonArray)).apply();
+                            JsonArray allUsersJsonArray = response.body().getAsJsonArray("loan");
+                            settings.edit().putString("loan", gson.toJson(allUsersJsonArray)).apply();
                             addCatalogueJsonArrayToRecyclerView(recyclerView, allUsersJsonArray);
                             User.storeTokenIfChanged(this, bearerToken, response.headers().get("Authorization"));
                             Toast.makeText(LoanActivity.this, "Loan list retrieve successful.", Toast.LENGTH_LONG).show();

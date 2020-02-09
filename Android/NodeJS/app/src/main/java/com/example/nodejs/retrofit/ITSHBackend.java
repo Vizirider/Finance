@@ -66,7 +66,21 @@ public interface ITSHBackend {
     @POST("/api/v1/transaction")
     Observable<Response<JsonObject>> createTransaction(@Header("Authorization") String token,
                                                        @Field("product_category") Integer category,
-                                                       @Field("income_outcome") String income_outcome,
+                                                       @Field("amount") String income_outcome,
+                                                       @Field("currency") String currency,
+                                                       @Field("Date") String Date);
+
+    @GET("/api/v1/loan")
+    Observable<Response<JsonObject>> getLoan(@Header("Authorization") String token );
+
+    @GET("/api/v1/sumloan")
+    Observable<Response<JsonObject>> sumLoan(@Header("Authorization") String token );
+
+    @FormUrlEncoded
+    @POST("/api/v1/loan")
+    Observable<Response<JsonObject>> createLoan(@Header("Authorization") String token,
+                                                       @Field("product_category") Integer category,
+                                                       @Field("amount") String income_outcome,
                                                        @Field("currency") String currency,
                                                        @Field("Date") String Date);
 

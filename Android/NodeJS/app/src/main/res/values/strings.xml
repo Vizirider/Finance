@@ -147,6 +147,13 @@
         <item>Event organization</item>
         <item>Household, tools</item>
     </string-array>
+    <string-array name="loan_category_id">
+        <item>személyi kölcsönök</item>
+        <item>lakáshitel</item>
+        <item>lakásfelújítás</item>
+        <item>autóvásárlás</item>
+        <item>személyi kölcsön hitelkiváltásra</item>
+    </string-array>
     <string-array name="currency">
         <item>HUF</item>
         <item>USD</item>

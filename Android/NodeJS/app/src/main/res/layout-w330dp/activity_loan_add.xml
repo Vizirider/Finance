@@ -101,7 +101,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/colorWhite"
-            android:entries="@array/category_id"
+            android:entries="@array/loan_category_id"
             android:popupBackground="@color/colorBlack"
             android:text="@string/choose_a_category"
             android:textAlignment="textStart"
