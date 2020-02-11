@@ -11,8 +11,7 @@ import android.widget.TextView;
 
 import com.example.nodejs.LoanItem;
 import com.example.nodejs.R;
-import com.example.nodejs.TransactionItem;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -31,7 +30,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import retrofit2.Retrofit;
 
 public class LoanItemViewActivity extends AppCompatActivity implements OnMapReadyCallback {
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     Gson gson = new GsonBuilder().setLenient().create();
     private MapView mapView;
@@ -45,7 +44,7 @@ public class LoanItemViewActivity extends AppCompatActivity implements OnMapRead
         setContentView(R.layout.activity_loan_item_view);
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(LoanItemViewActivity.this);
         final LoanItem transactionItem = gson.fromJson(settings.getString("loan","{}"), LoanItem.class);

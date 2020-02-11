@@ -15,7 +15,7 @@ import com.example.nodejs.catalogueActivities.DiscountCatalogueActivity;
 import com.example.nodejs.LoginActivity;
 import com.example.nodejs.R;
 import com.example.nodejs.loanActivities.FinanceLoanActivity;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.User;
 import com.example.nodejs.transactionActivities.FinanceTransactionActivity;
@@ -85,7 +85,7 @@ public class NavigationDrawer {
         final String bearerToken = callingActivity.getString(R.string.bearer_token) + " " + token;
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        ITSHBackend myAPI = retrofit.create(ITSHBackend.class);
+        FinanceBackend myAPI = retrofit.create(FinanceBackend.class);
         CompositeDisposable compositeDisposable = new CompositeDisposable();
 
         new MaterialStyledDialog.Builder(callingActivity)

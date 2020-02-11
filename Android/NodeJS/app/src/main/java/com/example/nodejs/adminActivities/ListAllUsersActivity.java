@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.nodejs.HomeActivity;
 import com.example.nodejs.R;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.User;
 import com.example.nodejs.utils.UsersRecycleViewAdapter;
@@ -27,7 +27,7 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
 public class ListAllUsersActivity extends AppCompatActivity implements UsersRecycleViewAdapter.ItemClickListener {
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     Retrofit retrofit = RetrofitClient.getInstance();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     Gson gson = new GsonBuilder().setLenient().create();
@@ -45,7 +45,7 @@ public class ListAllUsersActivity extends AppCompatActivity implements UsersRecy
         recyclerView.setDrawingCacheEnabled(true);
         recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
         String bearerToken = getString(R.string.bearer_token) + " " + settings.getString("token","");
         compositeDisposable.add(myAPI.adminListAllUsers(bearerToken)
                 .subscribeOn(Schedulers.io())
@@ -80,7 +80,7 @@ public class ListAllUsersActivity extends AppCompatActivity implements UsersRecy
         cancelUserListButton.setOnClickListener(v -> cancelUserList());
 
         updateUserListButton.setOnClickListener(v ->{
-            myAPI = retrofit.create(ITSHBackend.class);
+            myAPI = retrofit.create(FinanceBackend.class);
             String bearerToken = getString(R.string.bearer_token) + " " + settings.getString("token","");
             compositeDisposable.add(myAPI.adminListAllUsers(bearerToken)
                     .subscribeOn(Schedulers.io())

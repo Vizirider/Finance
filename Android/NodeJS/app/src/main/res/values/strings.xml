@@ -79,8 +79,6 @@
     <string name="new_password_set">New password successfully set!</string>
     <string name="reset_token_invalid_expired">ResetToken is invalid or expired!</string>
     <string name="main_menu">Main menu</string>
-    <string name="itsh_app">ITSH App</string>
-    <string name="itsh_logo_description_text">ITSH_Logo</string>
     <string name="profile_picture_update">Profile picture update</string>
     <string name="browse">file</string>
     <string name="camera">camera</string>

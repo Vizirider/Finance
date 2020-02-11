@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.example.nodejs.R;
 import com.example.nodejs.TransactionItem;
 import com.example.nodejs.User;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.utils.TransactionRecycleViewAdapter;
 import com.google.gson.Gson;
@@ -33,7 +33,7 @@ import retrofit2.Retrofit;
 
 public class TransactionActivity extends AppCompatActivity implements TransactionRecycleViewAdapter.ItemClickListener {
 
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     Gson gson = new GsonBuilder().setLenient().create();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     TransactionRecycleViewAdapter transactionRecycleViewAdapter;
@@ -87,7 +87,7 @@ public class TransactionActivity extends AppCompatActivity implements Transactio
         final SpinnerDialog categorySpinnerDialog;
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
         final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(TransactionActivity.this);
 
         // Initialize GUI elements
@@ -132,7 +132,7 @@ public class TransactionActivity extends AppCompatActivity implements Transactio
             String bearerToken = getString(R.string.bearer_token) + " " + token;
             linearLayout.removeAllViews();
 
-            myAPI = retrofit.create(ITSHBackend.class);
+            myAPI = retrofit.create(FinanceBackend.class);
             compositeDisposable.add(myAPI.getTransaction(bearerToken)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -158,7 +158,7 @@ public class TransactionActivity extends AppCompatActivity implements Transactio
             String bearerToken = getString(R.string.bearer_token) + " " + token;
             linearLayout.removeAllViews();
 
-            myAPI = retrofit.create(ITSHBackend.class);
+            myAPI = retrofit.create(FinanceBackend.class);
             compositeDisposable.add(myAPI.sumTransaction(bearerToken)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

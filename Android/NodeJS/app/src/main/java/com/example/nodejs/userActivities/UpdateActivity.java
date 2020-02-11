@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.nodejs.HomeActivity;
 import com.example.nodejs.R;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.User;
 import com.google.gson.Gson;
@@ -24,7 +24,7 @@ import retrofit2.Retrofit;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     Gson gson = new GsonBuilder().setLenient().create();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -40,7 +40,7 @@ public class UpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update);
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(UpdateActivity.this);
         final String token = settings.getString("token", "not found");

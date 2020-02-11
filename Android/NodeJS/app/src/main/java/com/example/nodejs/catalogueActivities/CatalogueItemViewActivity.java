@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.nodejs.CatalogueItem;
 import com.example.nodejs.R;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,7 +33,7 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
 public class CatalogueItemViewActivity extends AppCompatActivity implements OnMapReadyCallback {
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     Gson gson = new GsonBuilder().setLenient().create();
     private MapView mapView;
@@ -47,7 +47,7 @@ public class CatalogueItemViewActivity extends AppCompatActivity implements OnMa
         setContentView(R.layout.activity_catalogue_item_view);
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(CatalogueItemViewActivity.this);
         final CatalogueItem catalogueItem = gson.fromJson(settings.getString("catalogueItem","{}"), CatalogueItem.class);

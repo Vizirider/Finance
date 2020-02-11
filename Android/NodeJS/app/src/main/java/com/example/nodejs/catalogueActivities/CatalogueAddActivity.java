@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nodejs.R;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.utils.CatalogueRecycleViewAdapter;
 
@@ -29,7 +29,7 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
 public class CatalogueAddActivity extends AppCompatActivity implements CatalogueRecycleViewAdapter.ItemClickListener{
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     CatalogueRecycleViewAdapter adapter;
     Calendar currentDate;
@@ -97,7 +97,7 @@ public class CatalogueAddActivity extends AppCompatActivity implements Catalogue
         resetTillDateButton.setOnClickListener(v -> validTill.setText(""));
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
 
         Button newCatalogueButton = findViewById(R.id.newCatalogueButton);
         final Button cancelCatalogue = findViewById(R.id.cancelCatalogueButton);

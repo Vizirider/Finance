@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.auth0.android.jwt.JWT;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
 import com.google.gson.Gson;
@@ -31,7 +31,7 @@ import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
 
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     Retrofit retrofit = RetrofitClient.getInstance();
     Gson gson = new GsonBuilder().setLenient().create();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
 
         Button loginButton = findViewById(R.id.loginButton);
         Button regButton = findViewById(R.id.regButton);

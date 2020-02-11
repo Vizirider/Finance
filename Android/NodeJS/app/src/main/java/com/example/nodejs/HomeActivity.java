@@ -16,17 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
-import com.example.nodejs.transactionActivities.TransactionActivity;
 import com.example.nodejs.utils.NavigationDrawer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.mikepenz.materialdrawer.Drawer;
-
-import org.json.JSONArray;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -43,7 +39,7 @@ import retrofit2.Retrofit;
 
 public class HomeActivity extends AppCompatActivity {
 
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     Gson gson = new GsonBuilder().setLenient().create();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     Bitmap profilePicBitmap = null;
@@ -89,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
 
         TextView welcomeText = findViewById(R.id.itemNameTextView);
         ImageView hamburgerImageView = findViewById(R.id.hamburgerImageView);
@@ -100,7 +96,7 @@ public class HomeActivity extends AppCompatActivity {
 
         String bearerToken = getString(R.string.bearer_token) + " " + token;
 
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
         compositeDisposable.add(myAPI.sumTransaction(bearerToken)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -190,7 +186,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void getProfilePicture(String token){
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
         compositeDisposable.add(myAPI.getProfilePicture(token)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

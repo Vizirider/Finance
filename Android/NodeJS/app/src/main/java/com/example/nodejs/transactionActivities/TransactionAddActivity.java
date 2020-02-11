@@ -1,7 +1,6 @@
 package com.example.nodejs.transactionActivities;
 
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,21 +8,17 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nodejs.R;
-import com.example.nodejs.catalogueActivities.DiscountCatalogueActivity;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.utils.CatalogueRecycleViewAdapter;
 import com.example.nodejs.utils.TransactionRecycleViewAdapter;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -33,7 +28,7 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
 public class TransactionAddActivity extends AppCompatActivity implements TransactionRecycleViewAdapter.ItemClickListener{
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     CatalogueRecycleViewAdapter adapter;
     Date currentDate;
@@ -65,7 +60,7 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
         currentDate = Calendar.getInstance().getTime();
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
 
         Button newCatalogueButton = findViewById(R.id.newCatalogueButton);
         final Button cancelCatalogue = findViewById(R.id.cancelCatalogueButton);

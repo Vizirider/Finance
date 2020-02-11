@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Gép: localhost
--- Létrehozás ideje: 2020. Feb 09. 08:48
+-- Létrehozás ideje: 2020. Feb 11. 14:13
 -- Kiszolgáló verziója: 5.5.60-MariaDB
 -- PHP verzió: 5.4.16
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `hobby`
+-- Adatbázis: `finance`
 --
 
 -- --------------------------------------------------------

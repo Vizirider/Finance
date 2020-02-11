@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.example.nodejs.LoginActivity;
 import com.example.nodejs.R;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -19,7 +19,7 @@ import retrofit2.Retrofit;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     Retrofit retrofit = RetrofitClient.getInstance();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -27,7 +27,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
         String resetToken = this.getIntent().getData().getLastPathSegment();
 
         compositeDisposable.add(myAPI.checkTokenAvailability(resetToken)

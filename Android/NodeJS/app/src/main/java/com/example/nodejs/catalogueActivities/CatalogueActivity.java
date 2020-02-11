@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.nodejs.CatalogueItem;
 import com.example.nodejs.R;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.User;
 import com.example.nodejs.utils.CatalogueRecycleViewAdapter;
@@ -33,7 +33,7 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
 public class CatalogueActivity extends AppCompatActivity implements CatalogueRecycleViewAdapter.ItemClickListener {
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     Gson gson = new GsonBuilder().setLenient().create();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     CatalogueRecycleViewAdapter catalogueRecycleViewAdapter;
@@ -105,7 +105,7 @@ public class CatalogueActivity extends AppCompatActivity implements CatalogueRec
         final SpinnerDialog categorySpinnerDialog;
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
         final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(CatalogueActivity.this);
 
         siteSpinnerDialog = new SpinnerDialog(CatalogueActivity.this, siteList, getString(R.string.select_site));

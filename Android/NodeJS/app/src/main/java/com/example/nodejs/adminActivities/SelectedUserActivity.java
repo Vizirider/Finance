@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nodejs.R;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.User;
 import com.google.gson.Gson;
@@ -25,7 +25,7 @@ import retrofit2.Retrofit;
 
 public class SelectedUserActivity extends AppCompatActivity {
 
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     Gson gson = new GsonBuilder().setLenient().create();
 
@@ -35,7 +35,7 @@ public class SelectedUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_selected_user);
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(SelectedUserActivity.this);
         final User selectedUser = gson.fromJson(settings.getString("selectedUser","{}"), User.class);

@@ -47,11 +47,6 @@ public class LoginViewTest{
                 .check(matches(withText("")));
     }
 
-    @Test
-    public void ITSH() {
-        onView(withId(R.id.catalogueTextView))
-                .check(matches(withText("ITSH")));
-    }
 
     @Test
     public void EmailLabel() {

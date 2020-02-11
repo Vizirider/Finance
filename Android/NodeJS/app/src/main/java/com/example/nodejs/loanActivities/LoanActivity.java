@@ -13,14 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nodejs.LoanItem;
 import com.example.nodejs.R;
 import com.example.nodejs.TransactionItem;
 import com.example.nodejs.User;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.utils.LoanRecycleViewAdapter;
-import com.example.nodejs.utils.TransactionRecycleViewAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -35,7 +33,7 @@ import retrofit2.Retrofit;
 
 public class LoanActivity extends AppCompatActivity implements LoanRecycleViewAdapter.ItemClickListener {
 
-    ITSHBackend myAPI;
+    FinanceBackend myAPI;
     Gson gson = new GsonBuilder().setLenient().create();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     LoanRecycleViewAdapter loanRecycleViewAdapter;
@@ -89,7 +87,7 @@ public class LoanActivity extends AppCompatActivity implements LoanRecycleViewAd
         final SpinnerDialog categorySpinnerDialog;
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        myAPI = retrofit.create(ITSHBackend.class);
+        myAPI = retrofit.create(FinanceBackend.class);
         final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(LoanActivity.this);
 
         final TransactionItem transactionItem = gson.fromJson(settings.getString("loan","{}"), TransactionItem.class);
@@ -136,7 +134,7 @@ public class LoanActivity extends AppCompatActivity implements LoanRecycleViewAd
             String bearerToken = getString(R.string.bearer_token) + " " + token;
             linearLayout.removeAllViews();
 
-            myAPI = retrofit.create(ITSHBackend.class);
+            myAPI = retrofit.create(FinanceBackend.class);
             compositeDisposable.add(myAPI.getLoan(bearerToken)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -162,7 +160,7 @@ public class LoanActivity extends AppCompatActivity implements LoanRecycleViewAd
             String bearerToken = getString(R.string.bearer_token) + " " + token;
             linearLayout.removeAllViews();
 
-            myAPI = retrofit.create(ITSHBackend.class);
+            myAPI = retrofit.create(FinanceBackend.class);
             compositeDisposable.add(myAPI.sumTransaction(bearerToken)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

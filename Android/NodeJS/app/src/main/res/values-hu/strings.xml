@@ -73,8 +73,6 @@
     <string name="new_password_set">Az új jelszó sikeresen beállítva!</string>
     <string name="reset_token_invalid_expired">A ResetToken helytelen vagy lejárt!</string>
     <string name="main_menu">Főmenü</string>
-    <string name="itsh_app">ITSH App</string>
-    <string name="itsh_logo_description_text">ITSH_Logo</string>
     <string name="profile_picture_update">Profilkép frissítése</string>
     <string name="browse">Fájl</string>
     <string name="camera">Kamera</string>

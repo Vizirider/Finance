@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.example.nodejs.utils.PathUtils;
 import com.example.nodejs.R;
-import com.example.nodejs.retrofit.ITSHBackend;
+import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.User;
 import com.google.gson.Gson;
@@ -214,7 +214,7 @@ public class SetProfilePictureActivity extends AppCompatActivity {
 
     private void uploadProfilePic(String token, File profilePic) {
         Retrofit retrofit = RetrofitClient.getInstance();
-        ITSHBackend myAPI = retrofit.create(ITSHBackend.class);
+        FinanceBackend myAPI = retrofit.create(FinanceBackend.class);
         CompositeDisposable compositeDisposable = new CompositeDisposable();
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(SetProfilePictureActivity.this);
 
@@ -238,7 +238,7 @@ public class SetProfilePictureActivity extends AppCompatActivity {
         String bearerToken = getString(R.string.bearer_token) + " " + settings.getString("token", "");
 
         Retrofit retrofit = RetrofitClient.getInstance();
-        ITSHBackend myAPI = retrofit.create(ITSHBackend.class);
+        FinanceBackend myAPI = retrofit.create(FinanceBackend.class);
         CompositeDisposable compositeDisposable = new CompositeDisposable();
 
         compositeDisposable.add(myAPI.removeProfilePicture(bearerToken)
