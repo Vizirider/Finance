@@ -22,6 +22,7 @@ import com.example.nodejs.utils.LoanRecycleViewAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
@@ -152,7 +153,7 @@ public class LoanActivity extends AppCompatActivity implements LoanRecycleViewAd
         });
 
         Button categoryDialogButton = findViewById(R.id.catalogueDialogButton);
-        categoryDialogButton.setText("SUM Amount");
+        categoryDialogButton.setText("SUM loan");
 
         categoryDialogButton.setOnClickListener(v -> {
 
@@ -167,9 +168,10 @@ public class LoanActivity extends AppCompatActivity implements LoanRecycleViewAd
                     .subscribe(response -> {
                         if (response.code() >= 200 && response.code() < 300) {
                             JsonArray allUsersJsonArray = response.body().getAsJsonArray("loan");
+                            JsonObject jsonamount = allUsersJsonArray.get(0).getAsJsonObject();
                             settings.edit().putString("loan", gson.toJson(allUsersJsonArray)).apply();
                             User.storeTokenIfChanged(this, bearerToken, response.headers().get("Authorization"));
-                            Toast.makeText(LoanActivity.this, allUsersJsonArray + "", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoanActivity.this, jsonamount.get("loansum").toString().replaceAll("\"", "") + "", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(LoanActivity.this, response.code() + " " + response.errorBody().string(), Toast.LENGTH_LONG).show();
                         }

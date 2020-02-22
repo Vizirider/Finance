@@ -22,6 +22,7 @@ import com.example.nodejs.utils.TransactionRecycleViewAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
@@ -165,9 +166,9 @@ public class TransactionActivity extends AppCompatActivity implements Transactio
                     .subscribe(response -> {
                         if (response.code() >= 200 && response.code() < 300) {
                             JsonArray allUsersJsonArray = response.body().getAsJsonArray("transaction");
-                            settings.edit().putString("transaction", gson.toJson(allUsersJsonArray)).apply();
+                            JsonObject jsonamount = allUsersJsonArray.get(0).getAsJsonObject();
                             User.storeTokenIfChanged(this, bearerToken, response.headers().get("Authorization"));
-                            Toast.makeText(TransactionActivity.this, allUsersJsonArray + "", Toast.LENGTH_LONG).show();
+                            Toast.makeText(TransactionActivity.this, jsonamount.get("balance").toString().replaceAll("\"", "") + " HUF", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(TransactionActivity.this, response.code() + " " + response.errorBody().string(), Toast.LENGTH_LONG).show();
                         }

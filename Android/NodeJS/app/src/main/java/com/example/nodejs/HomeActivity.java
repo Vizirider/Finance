@@ -22,7 +22,12 @@ import com.example.nodejs.utils.NavigationDrawer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mikepenz.materialdrawer.Drawer;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
     Bitmap profilePicBitmap = null;
     Drawer drawer;
     File file;
+    TransactionItem transactionItem;
 
     private void logout() {
         Intent myIntent = new Intent(HomeActivity.this, LoginActivity.class);
@@ -102,11 +108,13 @@ public class HomeActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
                     if (response.code() >= 200 && response.code() < 300) {
+
                         JsonArray allUsersJsonArray = response.body().getAsJsonArray("transaction");
+                        JsonObject jsonamount = allUsersJsonArray.get(0).getAsJsonObject();
+
                         settings.edit().putString("transaction", gson.toJson(allUsersJsonArray)).apply();
                         User.storeTokenIfChanged(this, bearerToken, response.headers().get("Authorization"));
-                        Toast.makeText(HomeActivity.this, allUsersJsonArray+ " HUF", Toast.LENGTH_LONG).show();
-                        String newText = getString(R.string.welcome_onboard) + " " + nameToDisplay + allUsersJsonArray +  " HUF !";
+                        String newText = getString(R.string.welcome_onboard) + " " + nameToDisplay +  " balance: " + jsonamount.get("balance").toString().replaceAll("\"", "") +  " HUF !";
                         welcomeText.setText(newText);
                     } else {
                         Toast.makeText(HomeActivity.this, response.code() + " " + response.errorBody().string(), Toast.LENGTH_LONG).show();
