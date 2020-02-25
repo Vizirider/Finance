@@ -49,6 +49,7 @@
         </activity>
         <activity android:name=".catalogueActivities.CatalogueActivity" />
         <activity android:name=".catalogueActivities.CatalogueAddActivity" />
+        <activity android:name=".ChartView" />
         <activity android:name=".transactionActivities.TransactionActivity" />
         <activity android:name=".transactionActivities.TransactionAddActivity" />
         <activity android:name=".loanActivities.LoanActivity" />

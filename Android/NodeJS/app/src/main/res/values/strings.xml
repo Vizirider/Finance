@@ -39,6 +39,7 @@
 
     <string name="catalogue">Catalogue</string>
     <string name="transaction">Transaction</string>
+    <string name="transaction_chart">Chart</string>
 	<string name="loan">Loan</string>
     <string name="add_catalogue_element">Add catalogue element</string>
     <string name="add_transaction_element">Add transaction element</string>
@@ -46,6 +47,7 @@
     <string name="choose_a_site">Choose a site_id</string>
     <string name="category_list">Category list</string>
     <string name="sum_transaction">Sum transaction</string>
+    <string name="chart_transaction">Chart transaction</string>
 	<string name="sum_loan">Sum loan</string>
     <string name="choose_a_category">Choose a category_id</string>
     <string name="create_new_element">Create new element</string>

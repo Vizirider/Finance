@@ -10,12 +10,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.nodejs.R;
 import com.example.nodejs.User;
+import com.example.nodejs.ChartView;
 import com.example.nodejs.utils.NavigationDrawer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,6 +41,13 @@ public class FinanceTransactionActivity extends AppCompatActivity {
         FinanceTransactionActivity.this.startActivity(myIntent);
         finish();
     }
+
+    private void startChart(){
+        Intent myIntent = new Intent(FinanceTransactionActivity.this, ChartView.class);
+        FinanceTransactionActivity.this.startActivity(myIntent);
+        finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +65,7 @@ public class FinanceTransactionActivity extends AppCompatActivity {
 
         Button transactionButton = findViewById(R.id.transactionButton);
         Button newTransactionButton = findViewById(R.id.newTransactionButton);
+        Button chartButton = findViewById(R.id.transactionButton2);
         ImageView hamburgerImageView = findViewById(R.id.hamburgerImageView);
 
         hamburgerImageView.setOnClickListener(v -> drawer.openDrawer());
@@ -66,6 +74,8 @@ public class FinanceTransactionActivity extends AppCompatActivity {
 
 
         newTransactionButton.setOnClickListener(v -> startCatalogueAddActivity());
+
+        chartButton.setOnClickListener(v -> startChart());
 
     }
 
