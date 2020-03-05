@@ -1,7 +1,7 @@
 import { CATEGORIES } from '../shared/constansts';
 import { conn } from '../../app';
 
-const SELECT_PROPERTIES_QUERY_PART = `SELECT transaction.transaction, transaction.income_outcome, transaction.currency, transaction.Date`;
+const SELECT_PROPERTIES_QUERY_PART = `SELECT transaction.transaction, transaction.income_outcome, transaction.currency, transaction.Date, transaction.message`;
 const INNER_JOIN_QUERY_PART = `FROM transaction INNER JOIN category ON transaction.product_category = category.id ORDER BY transaction.Date`;
 
 
@@ -46,7 +46,7 @@ export default class Transaction {
 
     static addTransactionItem(newItem, res) {
         conn.query(
-            'INSERT INTO `transaction` (`product_category`, `income_outcome`, `currency`, `Date`) ' +
+            'INSERT INTO `transaction` (`product_category`, `income_outcome`, `currency`, `Date`, `message`) ' +
                 'VALUES (?, ?, ?, ?)',
             [
                 newItem.product_category,

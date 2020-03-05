@@ -1,6 +1,7 @@
 package com.example.nodejs.transactionActivities;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,9 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nodejs.R;
+import com.example.nodejs.catalogueActivities.CatalogueAddActivity;
 import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.utils.CatalogueRecycleViewAdapter;
@@ -31,7 +34,7 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
     FinanceBackend myAPI;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     CatalogueRecycleViewAdapter adapter;
-    Date currentDate;
+    Calendar currentDate;
     int currentDay, currentMonth, currentYear, selectedCurrency;
 
     private void cancelUpdate() {
@@ -54,10 +57,29 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
         final EditText amount = findViewById(R.id.sellerEditText);
         final Spinner category = findViewById(R.id.categorySpinner);
         final Spinner currency = findViewById(R.id.categorySpinner2);
+        final TextView validFrom = findViewById(R.id.DateTextView);
+        final Button resetFromDateButton = findViewById(R.id.resetDateButton);
+        final EditText message = findViewById(R.id.messageEditText);
+
 
         String[] categoriesStringArray = getResources().getStringArray(R.array.currency);
 
-        currentDate = Calendar.getInstance().getTime();
+        currentDate = Calendar.getInstance();
+
+        currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
+        currentMonth = currentDate.get(Calendar.MONTH) + 1;
+        currentYear = currentDate.get(Calendar.YEAR);
+
+        validFrom.setText(String.format("%d-%02d-%02d", currentYear, currentMonth, currentDay));
+
+        validFrom.setOnClickListener(v -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(TransactionAddActivity.this, (view, year, month, dayOfMonth) -> {
+                month++;
+                validFrom.setText(String.format("%d-%02d-%02d", year, month, dayOfMonth));
+            }, currentYear, currentMonth, currentDay);
+            datePickerDialog.show();
+        });
+        resetFromDateButton.setOnClickListener(v -> validFrom.setText(""));
 
         Retrofit retrofit = RetrofitClient.getInstance();
         myAPI = retrofit.create(FinanceBackend.class);
@@ -79,7 +101,7 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
 
                 selectedCategory = category.getSelectedItemPosition();
                 selectedCurrency = categoriesStringArray[currency.getSelectedItemPosition()];
-                createCatalogueItem(selectedCategory, amount.getText().toString(), selectedCurrency, currentDate.toString());
+                createCatalogueItem(selectedCategory, amount.getText().toString(), selectedCurrency, validFrom.toString(), message.toString());
         });
     }
 
@@ -93,12 +115,12 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
         }
     }
 
-    private void createCatalogueItem(final Integer category, final String amount, final String currency,final String currentDate){
+    private void createCatalogueItem(final Integer category, final String amount, final String currency,final String validFrom, final String message){
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(TransactionAddActivity.this);
         String token = settings.getString("token", "");
         String bearerToken = getString(R.string.bearer_token) + " " + token;
 
-                            compositeDisposable.add(myAPI.createTransaction(token, category, amount, currency, currentDate)
+                            compositeDisposable.add(myAPI.createTransaction(token, category, amount, currency, validFrom)
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(response -> {

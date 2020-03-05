@@ -10,10 +10,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <Button
+            android:id="@+id/catalogueDialogButton2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="152dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/chart_transaction"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewTransaction"
             android:layout_width="0dp"
-            android:layout_height="350dp"
+            android:layout_height="250dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -26,6 +39,8 @@
             app:layout_constraintVertical_bias="0.0">
 
         </android.support.v7.widget.RecyclerView>
+
+
 
         <Button
             android:id="@+id/updateListTransactionButton"
@@ -148,6 +163,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="358dp" />
+
+
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline5"

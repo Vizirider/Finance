@@ -41,11 +41,12 @@ public class TransactionRecycleViewAdapter extends RecyclerView.Adapter<Transact
         String transactionItemElementCurrency = TransactionItemElement.getCurrency();
         String transactionItemElementDate = TransactionItemElement.getDate();
         String transactionItemElementCategory = TransactionItemElement.getCategory_name();
+        String transactionItemElementMessage = TransactionItemElement.getMessage();
         holder.transactionItemIncomeOutcome.setText(transactionItemElementincome_outcome);
         holder.transactionItemCurrency.setText(transactionItemElementCurrency);
         holder.transactionItemDate.setText(transactionItemElementDate);
         holder.transactionCategory.setText(transactionItemElementCategory);
-
+        holder.transactionMessage.setText(transactionItemElementMessage);
     }
 
     // Total number of rows
@@ -64,6 +65,7 @@ public class TransactionRecycleViewAdapter extends RecyclerView.Adapter<Transact
         TextView transactionItemCurrency;
         TextView transactionItemDate;
         TextView transactionCategory;
+        TextView transactionMessage;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -71,6 +73,7 @@ public class TransactionRecycleViewAdapter extends RecyclerView.Adapter<Transact
             transactionItemCurrency = itemView.findViewById(R.id.currency);
             transactionItemDate = itemView.findViewById(R.id.date);
             transactionCategory = itemView.findViewById(R.id.category);
+            transactionMessage = itemView.findViewById(R.id.message);
             itemView.setOnClickListener(this);
         }
 

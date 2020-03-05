@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Gép: localhost
--- Létrehozás ideje: 2020. Feb 11. 14:13
+-- Létrehozás ideje: 2020. Már 05. 05:44
 -- Kiszolgáló verziója: 5.5.60-MariaDB
 -- PHP verzió: 5.4.16
 
@@ -410,19 +410,20 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `product_category` int(11) NOT NULL,
   `income_outcome` int(100) NOT NULL,
   `currency` varchar(100) NOT NULL,
-  `Date` date NOT NULL
+  `Date` date NOT NULL,
+  `message` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `transaction`
 --
 
-INSERT INTO `transaction` (`transaction`, `product_category`, `income_outcome`, `currency`, `Date`) VALUES
-(1, 1, 1500, 'HUF', '2019-10-13'),
-(2, 2, -20000, 'HUF', '2019-10-02'),
-(3, 3, 7600, 'HUF', '2019-10-22'),
-(4, 1, -4400, 'HUF', '2019-10-22'),
-(5, 1, 12500, 'HUF', '2020-02-02');
+INSERT INTO `transaction` (`transaction`, `product_category`, `income_outcome`, `currency`, `Date`, `message`) VALUES
+(1, 1, 1500, 'HUF', '2019-10-13', NULL),
+(2, 2, -20000, 'HUF', '2019-10-02', 'Programozás'),
+(3, 3, 7600, 'HUF', '2019-10-22', NULL),
+(4, 1, -4400, 'HUF', '2019-10-22', NULL),
+(5, 1, 12500, 'HUF', '2020-02-02', NULL);
 
 -- --------------------------------------------------------
 

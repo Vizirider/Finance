@@ -17,7 +17,7 @@ public class TransactionItem implements Parcelable {
         dest.writeString(Date);
         dest.writeString(category_name);
         dest.writeString(balance);
-
+        dest.writeString(message);
 
     }
 
@@ -28,6 +28,7 @@ public class TransactionItem implements Parcelable {
         Date = in.readString();
         category_name = in.readString();
         balance = in.readString();
+        message = in.readString();
 
 
     }
@@ -47,6 +48,7 @@ public class TransactionItem implements Parcelable {
     private String currency;
     private String Date;
     private String balance;
+    private String message;
 
     public Integer getTransaction() { return transaction; }
 
@@ -92,4 +94,11 @@ public class TransactionItem implements Parcelable {
         this.balance = balance;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
