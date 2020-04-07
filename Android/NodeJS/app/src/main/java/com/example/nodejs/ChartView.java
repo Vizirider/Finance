@@ -79,11 +79,9 @@ public class ChartView extends AppCompatActivity {
 
                             Integer[] income_outcomeArray = new Integer[income_outcome.size()];
                             income_outcomeArray = income_outcome.toArray(income_outcomeArray);
-
                             for(int i = 0; i < allUsersJsonArray.size(); i++) {
                                 dataEntries.add(new ValueDataEntry(dateArray[i], income_outcomeArray[i]));
                             }
-                            System.out.println(date);
                             pie.data(dataEntries);
                             anyChartViews.setChart(pie);
 

@@ -52,7 +52,7 @@
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:layout_height="67dp"
             android:layout_marginStart="200dp"
             android:gravity="center"
             android:maxWidth="120dp"
@@ -65,7 +65,7 @@
         <TextView
             android:id="@+id/category"
             android:layout_width="194dp"
-            android:layout_height="47dp"
+            android:layout_height="37dp"
             android:layout_marginStart="200dp"
             android:layout_marginTop="70dp"
             android:gravity="center"

@@ -2,7 +2,7 @@ import { CATEGORIES } from '../shared/constansts';
 import { conn } from '../../app';
 
 const SELECT_PROPERTIES_QUERY_PART = `SELECT loan.loan, loan.amount, loan.currency, loancategory.percentage, loan.Date`;
-const INNER_JOIN_QUERY_PART = `FROM loan INNER JOIN loancategory ON loan.product_category = loancategory.loancategory`;
+const INNER_JOIN_QUERY_PART = `FROM loan INNER JOIN loancategory ON loan.loan_category = loancategory.loancategory`;
 
 
 export default class Loan {
