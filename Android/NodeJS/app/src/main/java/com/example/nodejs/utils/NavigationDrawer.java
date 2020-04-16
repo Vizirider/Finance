@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.nodejs.ChartView;
 import com.example.nodejs.adminActivities.ListAllUsersActivity;
 import com.example.nodejs.catalogueActivities.DiscountCatalogueActivity;
 import com.example.nodejs.LoginActivity;
@@ -141,7 +142,8 @@ public class NavigationDrawer {
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withIdentifier(2).withName(R.string.discount_catalogue),
                         new PrimaryDrawerItem().withIdentifier(3).withName(R.string.finance_transaction),
-                        new PrimaryDrawerItem().withIdentifier(4).withName(R.string.finance_loan)
+                        new PrimaryDrawerItem().withIdentifier(4).withName(R.string.finance_loan),
+                        new PrimaryDrawerItem().withIdentifier(5).withName(R.string.statistic)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     // do something with the clicked item
@@ -182,19 +184,28 @@ public class NavigationDrawer {
                                 break;
                             }
                         case 5:
+                            if (callingActivity.getLocalClassName().equals("ChartView")){
+                                drawer.setSelection(-1);
+                                break;
+                            } else {
+                                startActivity(ChartView.class);
+                                drawer.closeDrawer();
+                                break;
+                            }
+                        case 6:
                             startActivity(ListAllUsersActivity.class);
                             drawer.closeDrawer();
                             break;
 
-                        case 6:
+                        case 7:
                             startActivity(UpdateActivity.class);
                             drawer.closeDrawer();
                             break;
-                        case 7:
+                        case 8:
                             deleteUser(user.getEmail(), token);
                             break;
 
-                        case 8:
+                        case 9:
                             logout();
                             break;
                     }
