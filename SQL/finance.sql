@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Gép: localhost
--- Létrehozás ideje: 2020. Ápr 16. 12:37
+-- Létrehozás ideje: 2020. Ápr 17. 16:58
 -- Kiszolgáló verziója: 5.5.60-MariaDB
 -- PHP verzió: 5.4.16
 
@@ -306,7 +306,7 @@ INSERT INTO `catalogue` (`id`, `seller`, `category_id`, `site_id`, `address`, `d
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 --
 -- A tábla adatainak kiíratása `category`
@@ -330,7 +330,8 @@ INSERT INTO `category` (`id`, `name`) VALUES
 (15, 'Magánoktatás'),
 (16, 'Rendezvényszervezés'),
 (17, 'Barkács, Háztartás, Szerszám'),
-(18, 'Albérlet, Lakástörlesztés');
+(18, 'Albérlet, Lakástörlesztés'),
+(19, 'Fizetés');
 
 -- --------------------------------------------------------
 
@@ -435,7 +436,7 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `currency` varchar(100) NOT NULL,
   `Date` date NOT NULL,
   `message` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `transaction`
@@ -446,7 +447,8 @@ INSERT INTO `transaction` (`transaction`, `product_category`, `income_outcome`, 
 (2, 2, -20000, 'HUF', '2019-10-02', 'Programozás'),
 (3, 3, 7600, 'HUF', '2019-10-22', NULL),
 (4, 1, -4400, 'HUF', '2019-10-22', NULL),
-(5, 1, 12500, 'HUF', '2020-02-02', NULL);
+(5, 1, 12500, 'HUF', '2020-02-02', NULL),
+(6, 19, 250000, 'HUF', '2020-04-01', 'Munkahely Kft.');
 
 -- --------------------------------------------------------
 
@@ -557,7 +559,7 @@ ALTER TABLE `catalogue`
 -- AUTO_INCREMENT a táblához `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT a táblához `groups`
 --
@@ -582,7 +584,7 @@ ALTER TABLE `site`
 -- AUTO_INCREMENT a táblához `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `transaction` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT a táblához `user`
 --
