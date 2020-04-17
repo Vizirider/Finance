@@ -74,6 +74,7 @@
     <string name="reset_token_invalid_expired">A ResetToken helytelen vagy lejárt!</string>
     <string name="main_menu">Főmenü</string>
     <string name="statistic">Statisztika</string>
+    <string name="groups">Csoportos</string>
     <string name="profile_picture_update">Profilkép frissítése</string>
     <string name="browse">Fájl</string>
     <string name="camera">Kamera</string>
@@ -112,6 +113,9 @@
         <item>Magánoktatás</item>
         <item>Rendezvényszervezés</item>
         <item>Barkács, Háztartás, Szerszám</item>
+        <item>Albérlet, Lakástörlesztés</item>
+        <item>Fizetés</item>
+
     </string-array>
     <string-array name="category_id">
         <item>Étel/Ital</item>
@@ -131,6 +135,8 @@
         <item>Magánoktatás</item>
         <item>Rendezvényszervezés</item>
         <item>Barkács, Háztartás, Szerszám</item>
+        <item>Albérlet, Lakástörlesztés</item>
+        <item>Fizetés</item>
     </string-array>
     <string-array name="locale">
         <item>HU</item>

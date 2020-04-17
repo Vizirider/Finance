@@ -13,9 +13,11 @@
         <activity android:name=".adminActivities.ListAllUsersActivity" />
         <activity android:name=".catalogueActivities.CatalogueItemViewActivity" />
         <activity android:name=".transactionActivities.TransactionItemViewActivity" />
+        <activity android:name=".groupsActivities.GroupsItemViewActivity" />
         <activity android:name=".userActivities.SetProfilePictureActivity" />
         <activity android:name=".catalogueActivities.DiscountCatalogueActivity" />
         <activity android:name=".transactionActivities.FinanceTransactionActivity" />
+        <activity android:name=".groupsActivities.FinanceGroupsActivity" />
         <activity android:name=".loanActivities.FinanceLoanActivity" />
 
         <activity
@@ -52,6 +54,8 @@
         <activity android:name=".ChartView" />
         <activity android:name=".transactionActivities.TransactionActivity" />
         <activity android:name=".transactionActivities.TransactionAddActivity" />
+        <activity android:name=".groupsActivities.GroupsActivity" />
+        <activity android:name=".groupsActivities.GroupsAddActivity" />
         <activity android:name=".loanActivities.LoanActivity" />
         <activity android:name=".loanActivities.LoanAddActivity" />
         <activity android:name=".userActivities.UpdateActivity" />

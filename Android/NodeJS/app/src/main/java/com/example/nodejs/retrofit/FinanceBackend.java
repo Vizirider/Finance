@@ -69,6 +69,17 @@ public interface FinanceBackend {
                                                        @Field("amount") String income_outcome,
                                                        @Field("currency") String currency,
                                                        @Field("Date") String Date);
+@GET("/api/v1/groups")
+    Observable<Response<JsonObject>> getGroups(@Header("Authorization") String token );
+
+    @FormUrlEncoded
+    @POST("/api/v1/groups")
+    Observable<Response<JsonObject>> createGroups(@Header("Authorization") String token,
+                                                       @Field("product_category") Integer category,
+                                                       @Field("amount") String income_outcome,
+                                                       @Field("currency") String currency,
+                                                       @Field("Date") String Date);													   
+													   
 
     @GET("/api/v1/loan")
     Observable<Response<JsonObject>> getLoan(@Header("Authorization") String token );

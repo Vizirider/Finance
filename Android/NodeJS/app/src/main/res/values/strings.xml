@@ -43,7 +43,8 @@
 	<string name="loan">Loan</string>
     <string name="add_catalogue_element">Add catalogue element</string>
     <string name="add_transaction_element">Add transaction element</string>
-	<string name="add_loan_element">Add loan element</string>
+    <string name="add_groups_element">Add groups element</string>
+    <string name="add_loan_element">Add loan element</string>
     <string name="choose_a_site">Choose a site_id</string>
     <string name="category_list">Category list</string>
     <string name="sum_transaction">Sum transaction</string>
@@ -54,6 +55,7 @@
     <string name="delete">delete</string>
     <string name="discount_catalogue">Discount catalogue</string>
     <string name="finance_transaction">Finance transaction</string>
+    <string name="finance_groups">Finance groups</string>
     <string name="finance_loan">Finance loan</string>
     <string name="select_site">Select site_id</string>
     <string name="select_category">Select category_id</string>
@@ -82,6 +84,7 @@
     <string name="reset_token_invalid_expired">ResetToken is invalid or expired!</string>
     <string name="main_menu">Main menu</string>
     <string name="statistic">Statistic</string>
+    <string name="groups">Groups</string>
     <string name="profile_picture_update">Profile picture update</string>
     <string name="browse">file</string>
     <string name="camera">camera</string>
@@ -128,6 +131,8 @@
         <item>Magánoktatás</item>
         <item>Rendezvényszervezés</item>
         <item>Barkács, Háztartás, Szerszám</item>
+        <item>Albérlet, Lakástörlesztés</item>
+        <item>Fizetés</item>
     </string-array>
     <string-array name="category_id">
         <item>Food/Drinks</item>
@@ -147,6 +152,9 @@
         <item>Personal education</item>
         <item>Event organization</item>
         <item>Household, tools</item>
+        <item>Rental fee, debit</item>
+        <item>Salary</item>
+
     </string-array>
     <string-array name="loan_category_id">
         <item>személyi kölcsönök</item>
