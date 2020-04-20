@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.nodejs.ChartView;
+import com.example.nodejs.statistics.ChartView;
 import com.example.nodejs.adminActivities.ListAllUsersActivity;
 import com.example.nodejs.catalogueActivities.DiscountCatalogueActivity;
 import com.example.nodejs.LoginActivity;
@@ -21,6 +21,7 @@ import com.example.nodejs.loanActivities.FinanceLoanActivity;
 import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.User;
+import com.example.nodejs.statistics.FinanceStatisticsActivity;
 import com.example.nodejs.transactionActivities.FinanceTransactionActivity;
 import com.example.nodejs.userActivities.SetProfilePictureActivity;
 import com.example.nodejs.userActivities.UpdateActivity;
@@ -187,11 +188,11 @@ public class NavigationDrawer {
                                 break;
                             }
                         case 5:
-                            if (callingActivity.getLocalClassName().equals("ChartView")){
+                            if (callingActivity.getLocalClassName().equals("FinanceStatisticsActivity")){
                                 drawer.setSelection(-1);
                                 break;
                             } else {
-                                startActivity(ChartView.class);
+                                startActivity(FinanceStatisticsActivity.class);
                                 drawer.closeDrawer();
                                 break;
                             }

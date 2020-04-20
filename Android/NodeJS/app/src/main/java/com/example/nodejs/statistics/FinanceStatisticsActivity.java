@@ -1,4 +1,4 @@
-package com.example.nodejs.groupsActivities;
+package com.example.nodejs.statistics;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,20 +24,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class FinanceGroupsActivity extends AppCompatActivity {
+public class FinanceStatisticsActivity extends AppCompatActivity {
 
     Gson gson = new GsonBuilder().setLenient().create();
     Bitmap profilePicBitmap = null;
 
     private void startCatalogueActivity(){
-        Intent myIntent = new Intent(FinanceGroupsActivity.this, GroupsActivity.class);
-        FinanceGroupsActivity.this.startActivity(myIntent);
+        Intent myIntent = new Intent(FinanceStatisticsActivity.this, ChartView.class);
+        FinanceStatisticsActivity.this.startActivity(myIntent);
         finish();
     }
 
     private void startCatalogueAddActivity(){
-        Intent myIntent = new Intent(FinanceGroupsActivity.this, GroupsAddActivity.class);
-        FinanceGroupsActivity.this.startActivity(myIntent);
+        Intent myIntent = new Intent(FinanceStatisticsActivity.this, ChartViewPie.class);
+        FinanceStatisticsActivity.this.startActivity(myIntent);
         finish();
     }
 
@@ -45,9 +45,9 @@ public class FinanceGroupsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_finance_groups);
+        setContentView(R.layout.activity_finance_statistics);
 
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(FinanceGroupsActivity.this);
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(FinanceStatisticsActivity.this);
         final User user = gson.fromJson(settings.getString("user","{}"), User.class);
         final String token = settings.getString("token","{}");
 

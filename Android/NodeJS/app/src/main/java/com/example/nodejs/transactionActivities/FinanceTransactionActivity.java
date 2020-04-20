@@ -15,7 +15,7 @@ import android.widget.ImageView;
 
 import com.example.nodejs.R;
 import com.example.nodejs.User;
-import com.example.nodejs.ChartView;
+import com.example.nodejs.statistics.ChartView;
 import com.example.nodejs.utils.NavigationDrawer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

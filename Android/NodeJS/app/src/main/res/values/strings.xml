@@ -44,6 +44,7 @@
     <string name="add_catalogue_element">Add catalogue element</string>
     <string name="add_transaction_element">Add transaction element</string>
     <string name="add_groups_element">Add groups element</string>
+    <string name="pie">Pie chart</string>
     <string name="add_loan_element">Add loan element</string>
     <string name="choose_a_site">Choose a site_id</string>
     <string name="category_list">Category list</string>
@@ -56,6 +57,7 @@
     <string name="discount_catalogue">Discount catalogue</string>
     <string name="finance_transaction">Finance transaction</string>
     <string name="finance_groups">Finance groups</string>
+    <string name="finance_statistics">Finance statistics chart</string>
     <string name="finance_loan">Finance loan</string>
     <string name="select_site">Select site_id</string>
     <string name="select_category">Select category_id</string>
@@ -85,6 +87,7 @@
     <string name="main_menu">Main menu</string>
     <string name="statistic">Statistic</string>
     <string name="groups">Groups</string>
+    <string name="bar">Bar chart</string>
     <string name="profile_picture_update">Profile picture update</string>
     <string name="browse">file</string>
     <string name="camera">camera</string>

@@ -19,6 +19,7 @@
         <activity android:name=".transactionActivities.FinanceTransactionActivity" />
         <activity android:name=".groupsActivities.FinanceGroupsActivity" />
         <activity android:name=".loanActivities.FinanceLoanActivity" />
+        <activity android:name=".statistics.FinanceStatisticsActivity" />
 
         <activity
             android:name=".userActivities.ResetPasswordActivity"
@@ -51,11 +52,12 @@
         </activity>
         <activity android:name=".catalogueActivities.CatalogueActivity" />
         <activity android:name=".catalogueActivities.CatalogueAddActivity" />
-        <activity android:name=".ChartView" />
         <activity android:name=".transactionActivities.TransactionActivity" />
         <activity android:name=".transactionActivities.TransactionAddActivity" />
         <activity android:name=".groupsActivities.GroupsActivity" />
         <activity android:name=".groupsActivities.GroupsAddActivity" />
+        <activity android:name=".statistics.ChartView" />
+        <activity android:name=".statistics.ChartViewPie" />
         <activity android:name=".loanActivities.LoanActivity" />
         <activity android:name=".loanActivities.LoanAddActivity" />
         <activity android:name=".userActivities.UpdateActivity" />
