@@ -61,6 +61,7 @@
         <activity android:name=".loanActivities.LoanActivity" />
         <activity android:name=".loanActivities.LoanAddActivity" />
         <activity android:name=".userActivities.UpdateActivity" />
+        <activity android:name=".PlanningActivity" />
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".LoginActivity"

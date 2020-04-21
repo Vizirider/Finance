@@ -4,6 +4,7 @@ import catalogueRoutes from './src/routes/catalogue-routes';
 import transactionRoutes from './src/routes/transaction-routes';
 import loanRoutes from './src/routes/loan-routes';
 import groupRoutes from './src/routes/groups-routes';
+import planningRoutes from './src/routes/planning-routes';
 import errorRoutes from './src/routes/error-routes';
 import express from 'express';
 import { json, urlencoded } from 'body-parser';
@@ -40,6 +41,7 @@ catalogueRoutes(router);
 transactionRoutes(router);
 loanRoutes(router);
 groupRoutes(router);
+planningRoutes(router);
 errorRoutes(router);
 app.use(config.appVersion, router);
 

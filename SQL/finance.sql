@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Gép: localhost
--- Létrehozás ideje: 2020. Ápr 17. 16:58
+-- Létrehozás ideje: 2020. Ápr 21. 14:09
 -- Kiszolgáló verziója: 5.5.60-MariaDB
 -- PHP verzió: 5.4.16
 
@@ -398,6 +398,28 @@ INSERT INTO `loancategory` (`loancategory`, `name`, `percentage`) VALUES
 (3, 'lakásfelújítás', '8,1 %'),
 (4, 'autóvásárlás', '13,8 %'),
 (5, 'személyi kölcsön hitelkiváltásra', '13,8 %');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `planning`
+--
+
+CREATE TABLE IF NOT EXISTS `planning` (
+  `currency` varchar(100) NOT NULL,
+  `salary` int(11) NOT NULL,
+  `fix_outcome` int(11) NOT NULL,
+  `cost` int(11) NOT NULL,
+  `long_term` int(11) NOT NULL,
+  `short_term` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `planning`
+--
+
+INSERT INTO `planning` (`currency`, `salary`, `fix_outcome`, `cost`, `long_term`, `short_term`) VALUES
+('HUF', 250000, 100000, 50000, 20, 80);
 
 -- --------------------------------------------------------
 
