@@ -1,8 +1,8 @@
 import { conn } from '../../app';
 
 const SELECT_PROPERTIES_QUERY_PART = `SELECT currency, salary, fix_outcome, cost, 
-                                    ROUND(((salary - fix_outcome - cost) * (long_term / 100)),0) AS longs, 
-                                    ROUND(((salary - fix_outcome - cost) * (short_term / 100)),0) AS shorts FROM planning`;
+                                    ROUND(((salary - fix_outcome - cost) * (long_term / 100)),0) AS long_term, 
+                                    ROUND(((salary - fix_outcome - cost) * (short_term / 100)),0) AS short_term FROM planning`;
 
 
 export default class Planning {
@@ -11,8 +11,8 @@ export default class Planning {
         this.salary = planningItem.salary;
         this.fix_outcome = planningItem.fix_outcome;
         this.cost = planningItem.cost;
-        this.long = planningItem.longs;
-        this.short = planningItem.shorts;
+        this.long_term = planningItem.long_term;
+        this.short_term = planningItem.short_term;
     }
 
     static getAllPlanningItems(res) {
@@ -32,8 +32,7 @@ export default class Planning {
 
     static addPlanningItem(newItem, res) {
         conn.query(
-            'INSERT INTO `planning` (`currency`, `salary`, `fix_outcome`, `cost`, `long_term`, `short_term`) ' +
-                'VALUES (?, ?, ?, ?, ?, ?)',
+            'UPDATE `planning` SET `currency` = ?, `salary` = ?, `fix_outcome` = ?, `cost` = ?, `long_term` = ?, `short_term` = ?' ,
             [
                 newItem.currency,
                 newItem.salary,

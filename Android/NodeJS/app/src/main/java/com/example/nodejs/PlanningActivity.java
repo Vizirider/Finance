@@ -16,8 +16,10 @@ import android.widget.Toast;
 import com.example.nodejs.R;
 import com.example.nodejs.TransactionItem;
 import com.example.nodejs.User;
+import com.example.nodejs.groupsActivities.PlanningItemViewActivity;
 import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
+import com.example.nodejs.utils.PlanningRecycleViewAdapter;
 import com.example.nodejs.utils.TransactionRecycleViewAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,15 +34,15 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
-public class PlanningActivity extends AppCompatActivity implements TransactionRecycleViewAdapter.ItemClickListener {
+public class PlanningActivity extends AppCompatActivity implements PlanningRecycleViewAdapter.ItemClickListener {
 
     FinanceBackend myAPI;
     Gson gson = new GsonBuilder().setLenient().create();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
-    TransactionRecycleViewAdapter transactionRecycleViewAdapter;
+    PlanningRecycleViewAdapter transactionRecycleViewAdapter;
 
     public void addCatalogueJsonArrayToRecyclerView(RecyclerView recyclerView, JsonArray catalogueJsonArray) {
-        transactionRecycleViewAdapter = new TransactionRecycleViewAdapter(PlanningActivity.this, catalogueJsonArray);
+        transactionRecycleViewAdapter = new PlanningRecycleViewAdapter(PlanningActivity.this, catalogueJsonArray);
         transactionRecycleViewAdapter.setClickListener(PlanningActivity.this);
         transactionRecycleViewAdapter.setHasStableIds(true);
         recyclerView.setAdapter(transactionRecycleViewAdapter);
@@ -52,10 +54,10 @@ public class PlanningActivity extends AppCompatActivity implements TransactionRe
         finish();
     }
 
-   /* private void startItemActivity(){
+    private void startItemActivity(){
         Intent myIntent = new Intent(PlanningActivity.this, PlanningItemViewActivity.class);
         this.startActivity(myIntent);
-    }*/
+    }
 
     private boolean isThereStoredCatalogue() {
         final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
@@ -67,7 +69,7 @@ public class PlanningActivity extends AppCompatActivity implements TransactionRe
     @Override
     public void onItemClick(View view, int position) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
-        TransactionItem catalogueItem = transactionRecycleViewAdapter.getItem(position);
+        GroupsItem catalogueItem = transactionRecycleViewAdapter.getItem(position);
         settings.edit().putString("planningItem", gson.toJson(catalogueItem)).apply();
         //startItemActivity();
     }
