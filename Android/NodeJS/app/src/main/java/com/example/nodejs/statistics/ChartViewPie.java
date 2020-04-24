@@ -71,7 +71,7 @@ public class ChartViewPie extends AppCompatActivity {
 
                         for(int i = 0; i < allUsersJsonArray.size(); i++){
                             income_outcome.add(Integer.parseInt(allUsersJsonArray.get(i).getAsJsonObject().get("income_outcome").toString().replaceAll("\"", "")));
-                            date.add(allUsersJsonArray.get(i).getAsJsonObject().get("Date").toString().replaceAll("\"", ""));
+                            date.add(allUsersJsonArray.get(i).getAsJsonObject().get("category_name").toString().replaceAll("\"", ""));
                         }
 
                         String[] dateArray = new String[date.size()];
@@ -86,7 +86,7 @@ public class ChartViewPie extends AppCompatActivity {
                         }
 
 
-                        PieDataSet dataSet = new PieDataSet(NoOfEmp, "Income outcome by date");
+                        PieDataSet dataSet = new PieDataSet(NoOfEmp, "Income outcome by category");
 
                         PieData data = new PieData(year, dataSet);
                         pieChart.setData(data);
