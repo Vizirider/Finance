@@ -31,7 +31,7 @@ export default class Transaction {
 
     static sumAllTransactionItems(res){
         conn.query(
-            `SELECT (SELECT SUM(income_outcome) FROM transaction) + (SELECT IFNULL(SUM(income_outcome),0) FROM groups WHERE groups.Date <= CURDATE())`,
+            `SELECT (SELECT SUM(income_outcome) FROM transaction) + (SELECT IFNULL(SUM(income_outcome),0) FROM groups WHERE groups.Date <= CURDATE()) AS balance`,
             [],
             function(err, result) {
                 if (err) {

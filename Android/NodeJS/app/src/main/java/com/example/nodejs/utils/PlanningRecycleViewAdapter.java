@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.nodejs.CatalogueItem;
 import com.example.nodejs.PlanningItem;
 import com.example.nodejs.R;
 import com.example.nodejs.GroupsItem;
@@ -30,8 +29,9 @@ public class PlanningRecycleViewAdapter extends RecyclerView.Adapter<PlanningRec
     // Inflates the row layout-w330dp from 'xml' when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.groups_card_layout, parent, false);
+        View view = mInflater.inflate(R.layout.planning_card_layout, parent, false);
         return new ViewHolder(view);
+
     }
 
     // Binds the data to the 'TextView' in each row
@@ -39,10 +39,14 @@ public class PlanningRecycleViewAdapter extends RecyclerView.Adapter<PlanningRec
     public void onBindViewHolder(ViewHolder holder, int i) {
         PlanningItem GroupsItemElement = gson.fromJson(mData.get(i), PlanningItem.class);
         String GroupsItemElementincome_outcome = GroupsItemElement.getCurrency();
+        Integer GroupsItemSalary = GroupsItemElement.getSalary();
         Integer GroupsItemElementCurrency = GroupsItemElement.getFix_outcome();
         Integer GroupsItemElementDate = GroupsItemElement.getCost();
         Integer GroupsItemElementCategory = GroupsItemElement.getLong_term();
         Integer GroupsItemElementMessage = GroupsItemElement.getShort_term();
+        holder.GroupsItemSalary.setText(GroupsItemSalary);
+        holder.GroupsItemElementCategory.setText(GroupsItemElementCategory);
+        holder.GroupsItemElementMessage.setText(GroupsItemElementMessage);
     }
 
     // Total number of rows
@@ -58,6 +62,7 @@ public class PlanningRecycleViewAdapter extends RecyclerView.Adapter<PlanningRec
     // Stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView GroupsItemElementincome_outcome;
+        TextView GroupsItemSalary;
         TextView GroupsItemElementCurrency;
         TextView GroupsItemElementDate;
         TextView GroupsItemElementCategory;
@@ -65,11 +70,9 @@ public class PlanningRecycleViewAdapter extends RecyclerView.Adapter<PlanningRec
 
         ViewHolder(View itemView) {
             super(itemView);
-            GroupsItemElementincome_outcome = itemView.findViewById(R.id.income_outcome);
-            GroupsItemElementCurrency = itemView.findViewById(R.id.currency);
-            GroupsItemElementDate = itemView.findViewById(R.id.date);
-            GroupsItemElementCategory = itemView.findViewById(R.id.category);
-            GroupsItemElementMessage = itemView.findViewById(R.id.message);
+            GroupsItemSalary = itemView.findViewById(R.id.date);
+            GroupsItemElementCategory = itemView.findViewById(R.id.message);
+            GroupsItemElementMessage = itemView.findViewById(R.id.category);
             itemView.setOnClickListener(this);
         }
 
@@ -80,8 +83,8 @@ public class PlanningRecycleViewAdapter extends RecyclerView.Adapter<PlanningRec
     }
 
     // Convenience method for getting data at click position
-    public GroupsItem getItem(int id) {
-        return gson.fromJson(mData.get(id), GroupsItem.class);
+    public PlanningItem getItem(int id) {
+        return gson.fromJson(mData.get(id), PlanningItem.class);
     }
 
     // Parent activity will implement this method to respond to click events

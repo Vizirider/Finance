@@ -86,10 +86,12 @@ public interface FinanceBackend {
     @FormUrlEncoded
     @POST("/api/v1/planning")
     Observable<Response<JsonObject>> createPlanning(@Header("Authorization") String token,
-                                                  @Field("product_category") Integer category,
-                                                  @Field("amount") String income_outcome,
                                                   @Field("currency") String currency,
-                                                  @Field("Date") String Date);
+                                                  @Field("salary") Integer salary,
+                                                  @Field("fix_outcome") Integer fix_outcome,
+                                                  @Field("cost") Integer cost,
+                                                  @Field("long_term") Integer long_term,
+                                                  @Field("short_term") Integer short_term);
 
 
     @GET("/api/v1/loan")

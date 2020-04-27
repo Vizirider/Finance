@@ -9,14 +9,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nodejs.R;
 import com.example.nodejs.TransactionItem;
 import com.example.nodejs.User;
-import com.example.nodejs.groupsActivities.PlanningItemViewActivity;
+import com.example.nodejs.PlanningItemViewActivity;
+import com.example.nodejs.loanActivities.LoanAddActivity;
 import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
 import com.example.nodejs.utils.PlanningRecycleViewAdapter;
@@ -39,13 +42,13 @@ public class PlanningActivity extends AppCompatActivity implements PlanningRecyc
     FinanceBackend myAPI;
     Gson gson = new GsonBuilder().setLenient().create();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
-    PlanningRecycleViewAdapter transactionRecycleViewAdapter;
+    PlanningRecycleViewAdapter planningRecycleViewAdapter;
 
     public void addCatalogueJsonArrayToRecyclerView(RecyclerView recyclerView, JsonArray catalogueJsonArray) {
-        transactionRecycleViewAdapter = new PlanningRecycleViewAdapter(PlanningActivity.this, catalogueJsonArray);
-        transactionRecycleViewAdapter.setClickListener(PlanningActivity.this);
-        transactionRecycleViewAdapter.setHasStableIds(true);
-        recyclerView.setAdapter(transactionRecycleViewAdapter);
+        planningRecycleViewAdapter = new PlanningRecycleViewAdapter(PlanningActivity.this, catalogueJsonArray);
+        planningRecycleViewAdapter.setClickListener(PlanningActivity.this);
+        planningRecycleViewAdapter.setHasStableIds(true);
+        recyclerView.setAdapter(planningRecycleViewAdapter);
     }
 
     private void cancelUpdate() {
@@ -69,9 +72,9 @@ public class PlanningActivity extends AppCompatActivity implements PlanningRecyc
     @Override
     public void onItemClick(View view, int position) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
-        GroupsItem catalogueItem = transactionRecycleViewAdapter.getItem(position);
+        PlanningItem catalogueItem = planningRecycleViewAdapter.getItem(position);
         settings.edit().putString("planningItem", gson.toJson(catalogueItem)).apply();
-        //startItemActivity();
+        startItemActivity();
     }
 
     @Override
@@ -98,42 +101,60 @@ public class PlanningActivity extends AppCompatActivity implements PlanningRecyc
         Button cancelUpdate = findViewById(R.id.updateListPlanningButton2);
         final LinearLayout linearLayout = new LinearLayout(PlanningActivity.this);
 
+        final Spinner currency = findViewById(R.id.categorySpinner4);
+        final EditText salary = findViewById(R.id.sellerEditText2);
+        final EditText outcome = findViewById(R.id.sellerEditText3);
+        final EditText cost = findViewById(R.id.sellerEditText4);
+        final EditText longterm = findViewById(R.id.longtermedit);
+        final EditText shortterm = findViewById(R.id.shorttermedit);
+
+        String[] categoriesStringArray = getResources().getStringArray(R.array.category_id);
+
         // Set GUI element parameters
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setHorizontalGravity(LinearLayout.TEXT_ALIGNMENT_CENTER);
         linearLayout.getDividerDrawable();
 
-       /* // Load stored catalogue if exists
-        if (isThereStoredCatalogue()){
-            JsonArray catalogueJsonArray = gson.fromJson(settings.getString("planning", "{}"), JsonArray.class);
-            addCatalogueJsonArrayToRecyclerView(recyclerView, catalogueJsonArray);
-        }*/
-
         cancelUpdate.setOnClickListener(v -> cancelUpdate());
 
         catalogueListButton.setOnClickListener(v -> {
 
+            createplanning(currency.getSelectedItem().toString(), Integer.parseInt(salary.getText().toString()), Integer.parseInt(outcome.getText().toString()),
+                    Integer.parseInt(cost.getText().toString()), Integer.parseInt(longterm.getText().toString()), Integer.parseInt(shortterm.getText().toString()));
+
+        });
+
+        String token = settings.getString("token", "");
+        String bearerToken = getString(R.string.bearer_token) + " " + token;
+        linearLayout.removeAllViews();
+
+        myAPI = retrofit.create(FinanceBackend.class);
+        compositeDisposable.add(myAPI.getPlanning(bearerToken)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> {
+                    if (response.code() >= 200 && response.code() < 300) {
+                        JsonArray allUsersJsonArray = response.body().getAsJsonArray("planning");
+                        settings.edit().putString("planning", gson.toJson(allUsersJsonArray)).apply();
+                        addCatalogueJsonArrayToRecyclerView(recyclerView, allUsersJsonArray);
+                        User.storeTokenIfChanged(this, bearerToken, response.headers().get("Authorization"));
+                        Toast.makeText(PlanningActivity.this, "Planning list retrieve successful.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(PlanningActivity.this, response.code() + " " + response.errorBody().string(), Toast.LENGTH_LONG).show();
+                    }
+                }));
+
+    }
+        private void createplanning(final String currency, final Integer salary,final Integer outcome,final Integer cost,final Integer longterm,final Integer shortterm) {
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
             String token = settings.getString("token", "");
             String bearerToken = getString(R.string.bearer_token) + " " + token;
-            linearLayout.removeAllViews();
-
-            myAPI = retrofit.create(FinanceBackend.class);
-            compositeDisposable.add(myAPI.getPlanning(bearerToken)
+            compositeDisposable.add(myAPI.createPlanning(token, currency, salary, outcome, cost, longterm, shortterm)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response -> {
-                        if (response.code() >= 200 && response.code() < 300) {
-                            JsonArray allUsersJsonArray = response.body().getAsJsonArray("planning");
-                            settings.edit().putString("planning", gson.toJson(allUsersJsonArray)).apply();
-                            addCatalogueJsonArrayToRecyclerView(recyclerView, allUsersJsonArray);
-                            User.storeTokenIfChanged(this, bearerToken, response.headers().get("Authorization"));
-                            Toast.makeText(PlanningActivity.this, "Planning list retrieve successful.", Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(PlanningActivity.this, response.code() + " " + response.errorBody().string(), Toast.LENGTH_LONG).show();
-                        }
                     }));
-        });
+        }
 
-    }
 
     }

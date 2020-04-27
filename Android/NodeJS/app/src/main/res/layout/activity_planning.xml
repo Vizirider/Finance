@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <Spinner
-            android:id="@+id/categorySpinner3"
+            android:id="@+id/categorySpinner4"
             android:layout_width="95dp"
             android:layout_height="41dp"
             android:layout_marginStart="164dp"
@@ -74,22 +74,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/sellerEditText7"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="312dp"
-            android:layout_marginEnd="60dp"
-
-            android:ems="10"
-            android:textAlignment="textStart"
-            android:textColor="#FFFFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/sellerTextView8"
             android:layout_width="100dp"
@@ -139,7 +123,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/sellerEditText5"
+            android:id="@+id/sellerEditText2"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -155,11 +139,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/sellerEditText6"
+            android:id="@+id/sellerEditText4"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="352dp"
+            android:layout_marginEnd="60dp"
+
+            android:ems="10"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/sellerEditText3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="312dp"
             android:layout_marginEnd="60dp"
 
             android:ems="10"

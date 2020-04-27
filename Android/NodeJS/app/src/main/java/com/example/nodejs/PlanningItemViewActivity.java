@@ -1,4 +1,4 @@
-package com.example.nodejs.groupsActivities;
+package com.example.nodejs;
 
 import android.content.SharedPreferences;
 import android.location.Address;
@@ -47,7 +47,7 @@ public class PlanningItemViewActivity extends AppCompatActivity implements OnMap
         myAPI = retrofit.create(FinanceBackend.class);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(PlanningItemViewActivity.this);
-        final GroupsItem GroupsItem = gson.fromJson(settings.getString("Groups","{}"), GroupsItem.class);
+        final GroupsItem GroupsItem = gson.fromJson(settings.getString("Planning","{}"), GroupsItem.class);
         String token = settings.getString("token", " ");
 
         TextView sellerTextView = findViewById(R.id.sellerTextView);

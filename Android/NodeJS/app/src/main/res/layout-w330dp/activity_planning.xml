@@ -140,6 +140,22 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/sellerEditText3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="384dp"
+            android:layout_marginEnd="40dp"
+
+            android:ems="10"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
             android:id="@+id/sellerEditText4"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -169,22 +185,6 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/sellerEditText3"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="384dp"
-            android:layout_marginEnd="40dp"
-
-            android:ems="10"
-            android:textAlignment="textStart"
-            android:textColor="#FFFFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
