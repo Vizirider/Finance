@@ -24,6 +24,20 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:id="@+id/currency2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="40dp"
+            android:minWidth="100dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Long term / short term:" />
+
+        <TextView
             android:id="@+id/income_outcome"
             android:layout_width="match_parent"
             android:layout_height="37dp"
@@ -32,19 +46,8 @@
             android:textColor="@android:color/white"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/currency"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="40dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/salary" />
 
         <TextView
             android:id="@+id/message"

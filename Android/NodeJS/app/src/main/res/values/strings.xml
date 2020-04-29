@@ -115,6 +115,7 @@
     <string name="cost">Cost:</string>
     <string name="long_term">Long term %</string>
     <string name="short_term">Short term %</string>
+    <string name="update_plan">Update Plan</string>
     <string-array name="site_id">
         <item>Szeged</item>
         <item>Pécs</item>

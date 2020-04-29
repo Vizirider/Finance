@@ -13,22 +13,22 @@ public class PlanningItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         dest.writeString(currency);
-        dest.writeInt(salary);
-        dest.writeInt(fix_outcome);
-        dest.writeInt(cost);
-        dest.writeInt(long_term);
-        dest.writeInt(short_term);
+        dest.writeString(salary);
+        dest.writeString(fix_outcome);
+        dest.writeString(cost);
+        dest.writeString(long_term);
+        dest.writeString(short_term);
 
     }
 
     private PlanningItem(Parcel in) {
 
         currency = in.readString();
-        salary = in.readInt();
-        fix_outcome = in.readInt();
-        cost = in.readInt();
-        long_term = in.readInt();
-        short_term = in.readInt();
+        salary = in.readString();
+        fix_outcome = in.readString();
+        cost = in.readString();
+        long_term = in.readString();
+        short_term = in.readString();
 
 
     }
@@ -43,51 +43,51 @@ public class PlanningItem implements Parcelable {
     };
     private String currency;
 
-    public Integer getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(Integer salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
-    public Integer getFix_outcome() {
+    public String getFix_outcome() {
         return fix_outcome;
     }
 
-    public void setFix_outcome(Integer fix_outcome) {
+    public void setFix_outcome(String fix_outcome) {
         this.fix_outcome = fix_outcome;
     }
 
-    public Integer getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(Integer cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 
-    public Integer getLong_term() {
+    public String getLong_term() {
         return long_term;
     }
 
-    public void setLong_term(Integer long_term) {
+    public void setLong_term(String long_term) {
         this.long_term = long_term;
     }
 
-    public Integer getShort_term() {
+    public String getShort_term() {
         return short_term;
     }
 
-    public void setShort_term(Integer short_term) {
+    public void setShort_term(String short_term) {
         this.short_term = short_term;
     }
 
-    private Integer salary;
-    private Integer fix_outcome;
-    private Integer cost;
-    private Integer long_term;
-    private Integer short_term;
+    private String salary;
+    private String fix_outcome;
+    private String cost;
+    private String long_term;
+    private String short_term;
 
 
     public String getCurrency() {

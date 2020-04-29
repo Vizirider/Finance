@@ -39,11 +39,13 @@ public class PlanningRecycleViewAdapter extends RecyclerView.Adapter<PlanningRec
     public void onBindViewHolder(ViewHolder holder, int i) {
         PlanningItem GroupsItemElement = gson.fromJson(mData.get(i), PlanningItem.class);
         String GroupsItemElementincome_outcome = GroupsItemElement.getCurrency();
-        Integer GroupsItemSalary = GroupsItemElement.getSalary();
-        Integer GroupsItemElementCurrency = GroupsItemElement.getFix_outcome();
-        Integer GroupsItemElementDate = GroupsItemElement.getCost();
-        Integer GroupsItemElementCategory = GroupsItemElement.getLong_term();
-        Integer GroupsItemElementMessage = GroupsItemElement.getShort_term();
+        String GroupsItemSalary = "Salary: " + GroupsItemElement.getSalary() + " "  + GroupsItemElement.getCurrency();
+        String GroupsItemElementCurrency = "Fix outcome: " + GroupsItemElement.getFix_outcome() + " "  + GroupsItemElement.getCurrency();;
+        String GroupsItemElementDate = "Cost:" + GroupsItemElement.getCost() + " "  + GroupsItemElement.getCurrency();;
+        String GroupsItemElementCategory = "Long term: " + GroupsItemElement.getLong_term() + " "  + GroupsItemElement.getCurrency();;
+        String GroupsItemElementMessage = "Short term: " + GroupsItemElement.getShort_term() + " "  + GroupsItemElement.getCurrency();;
+        holder.GroupsItemElementDate.setText(GroupsItemElementDate);
+        holder.GroupsItemElementCurrency.setText(GroupsItemElementCurrency);
         holder.GroupsItemSalary.setText(GroupsItemSalary);
         holder.GroupsItemElementCategory.setText(GroupsItemElementCategory);
         holder.GroupsItemElementMessage.setText(GroupsItemElementMessage);
@@ -70,7 +72,9 @@ public class PlanningRecycleViewAdapter extends RecyclerView.Adapter<PlanningRec
 
         ViewHolder(View itemView) {
             super(itemView);
-            GroupsItemSalary = itemView.findViewById(R.id.date);
+            GroupsItemElementDate = itemView.findViewById(R.id.currency2);
+            GroupsItemElementCurrency = itemView.findViewById(R.id.date);
+            GroupsItemSalary = itemView.findViewById(R.id.income_outcome);
             GroupsItemElementCategory = itemView.findViewById(R.id.message);
             GroupsItemElementMessage = itemView.findViewById(R.id.category);
             itemView.setOnClickListener(this);

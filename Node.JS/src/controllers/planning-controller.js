@@ -19,12 +19,12 @@ export function create_Planning_item(req, res) {
 }
 
 export function read_all_planning_items(req, res) {
-    Planning.getAllPlanningItems(function(err, transaction) {
+    Planning.getAllPlanningItems(function(err, planning) {
         if (err) {
             res.status(400).send(err);
             return;
         } else {
-            res.json({ transaction });
+            res.json({ planning });
             return;
         }
     });

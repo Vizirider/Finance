@@ -97,7 +97,8 @@ public class PlanningActivity extends AppCompatActivity implements PlanningRecyc
         final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
 
 
-        Button catalogueListButton = findViewById(R.id.updateListPlanningButton);
+        Button updateListButton = findViewById(R.id.updateListPlanningButton);
+        Button catalogueListButton = findViewById(R.id.updateListPlanningButton3);
         Button cancelUpdate = findViewById(R.id.updateListPlanningButton2);
         final LinearLayout linearLayout = new LinearLayout(PlanningActivity.this);
 
@@ -117,32 +118,35 @@ public class PlanningActivity extends AppCompatActivity implements PlanningRecyc
 
         cancelUpdate.setOnClickListener(v -> cancelUpdate());
 
-        catalogueListButton.setOnClickListener(v -> {
+        updateListButton.setOnClickListener((v -> {
 
             createplanning(currency.getSelectedItem().toString(), Integer.parseInt(salary.getText().toString()), Integer.parseInt(outcome.getText().toString()),
                     Integer.parseInt(cost.getText().toString()), Integer.parseInt(longterm.getText().toString()), Integer.parseInt(shortterm.getText().toString()));
+        }));
+
+        catalogueListButton.setOnClickListener(v -> {
+
+            String token = settings.getString("token", "");
+            String bearerToken = getString(R.string.bearer_token) + " " + token;
+            linearLayout.removeAllViews();
+            myAPI = retrofit.create(FinanceBackend.class);
+            compositeDisposable.add(myAPI.getPlanning(bearerToken)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(response -> {
+                        if (response.code() >= 200 && response.code() < 300) {
+                            JsonArray allUsersJsonArray = response.body().getAsJsonArray("planning");
+                            settings.edit().putString("planning", gson.toJson(allUsersJsonArray)).apply();
+                            addCatalogueJsonArrayToRecyclerView(recyclerView, allUsersJsonArray);
+                            User.storeTokenIfChanged(this, bearerToken, response.headers().get("Authorization"));
+                            Toast.makeText(PlanningActivity.this, "Planning list retrieve successful.", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(PlanningActivity.this, response.code() + " " + response.errorBody().string(), Toast.LENGTH_LONG).show();
+                        }
+                    }));
 
         });
 
-        String token = settings.getString("token", "");
-        String bearerToken = getString(R.string.bearer_token) + " " + token;
-        linearLayout.removeAllViews();
-
-        myAPI = retrofit.create(FinanceBackend.class);
-        compositeDisposable.add(myAPI.getPlanning(bearerToken)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> {
-                    if (response.code() >= 200 && response.code() < 300) {
-                        JsonArray allUsersJsonArray = response.body().getAsJsonArray("planning");
-                        settings.edit().putString("planning", gson.toJson(allUsersJsonArray)).apply();
-                        addCatalogueJsonArrayToRecyclerView(recyclerView, allUsersJsonArray);
-                        User.storeTokenIfChanged(this, bearerToken, response.headers().get("Authorization"));
-                        Toast.makeText(PlanningActivity.this, "Planning list retrieve successful.", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(PlanningActivity.this, response.code() + " " + response.errorBody().string(), Toast.LENGTH_LONG).show();
-                    }
-                }));
 
     }
         private void createplanning(final String currency, final Integer salary,final Integer outcome,final Integer cost,final Integer longterm,final Integer shortterm) {

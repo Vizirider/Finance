@@ -225,6 +225,17 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="110dp"
             android:layout_height="55dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="76dp"
+            android:text="@string/update_plan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+        <Button
+            android:id="@+id/updateListPlanningButton3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="92dp"
+            android:layout_height="52dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="80dp"
             android:text="@string/update_list"
@@ -234,9 +245,9 @@
         <Button
             android:id="@+id/updateListPlanningButton2"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="110dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="200dp"
+            android:layout_width="81dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="236dp"
             android:layout_marginTop="80dp"
             android:text="@string/cancel"
             app:layout_constraintStart_toStartOf="parent"
