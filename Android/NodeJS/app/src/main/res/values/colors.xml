@@ -16,7 +16,7 @@
     <!-- OVERWRITE THESE COLORS FOR A LIGHT THEME -->
     <!-- MaterialDrawer DEFAULT colors -->
     <!-- <color name="material_drawer_background">#F9F9F9</color> -->
-    <color name="material_drawer_background">#2E0038</color>
+    <color name="material_drawer_background">#1E5223</color>
     <!-- Material DEFAULT text / items colors -->
     <color name="material_drawer_primary_text">#FFFFFF</color>
     <color name="material_drawer_primary_icon">#8A000000</color>
