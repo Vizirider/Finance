@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.nodejs.R;
 import com.example.nodejs.retrofit.FinanceBackend;
 import com.example.nodejs.retrofit.RetrofitClient;
+import com.example.nodejs.transactionActivities.TransactionAddActivity;
 import com.example.nodejs.utils.CatalogueRecycleViewAdapter;
 import com.example.nodejs.utils.LoanRecycleViewAdapter;
 
@@ -32,7 +33,6 @@ public class LoanAddActivity extends AppCompatActivity implements LoanRecycleVie
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     CatalogueRecycleViewAdapter adapter;
     Date currentDate;
-    int currentDay, currentMonth, currentYear, selectedCurrency;
 
     private void cancelUpdate() {
         Intent myIntent = new Intent(LoanAddActivity.this, FinanceLoanActivity.class);
@@ -77,7 +77,7 @@ public class LoanAddActivity extends AppCompatActivity implements LoanRecycleVie
             Integer selectedCategory;
             String selectedCurrency;
 
-                selectedCategory = category.getSelectedItemPosition();
+                selectedCategory = category.getSelectedItemPosition() + 1;
                 selectedCurrency = categoriesStringArray[currency.getSelectedItemPosition()];
                 createCatalogueItem(selectedCategory, amount.getText().toString(), selectedCurrency, currentDate.toString());
         });
@@ -102,11 +102,11 @@ public class LoanAddActivity extends AppCompatActivity implements LoanRecycleVie
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(response -> {
-                                       /* if (response.code() >= 200 && response.code() < 300){
-                                            Toast.makeText(TransactionAddActivity.this, "TransactionItem added successfully!", Toast.LENGTH_SHORT).show();
+                                        if (response.code() >= 200 && response.code() < 300){
+                                            Toast.makeText(LoanAddActivity.this, "LoanItem added successfully!", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            Toast.makeText(TransactionAddActivity.this, "" + response.code(), Toast.LENGTH_SHORT).show();
-                                        } */
+                                            Toast.makeText(LoanAddActivity.this, "" + response.code(), Toast.LENGTH_SHORT).show();
+                                        }
                                     }));
     }
 }

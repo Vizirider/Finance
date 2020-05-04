@@ -11,6 +11,7 @@ export default class Groups {
         this.income_outcome = groupsItem.income_outcome;
         this.currency = groupsItem.currency;
         this.Date = new Date(groupsItem.Date);
+        this.message = groupsItem.message;
     }
 
     static getAllGroupsItem(res) {
@@ -32,12 +33,13 @@ export default class Groups {
     static addGroupsItem(newItem, res) {
         conn.query(
             'INSERT INTO `groups` (`product_category`, `income_outcome`, `currency`, `Date`, `message`) ' +
-                'VALUES (?, ?, ?, ?)',
+                'VALUES (?, ?, ?, ?, ?)',
             [
                 newItem.product_category,
                 newItem.income_outcome,
                 newItem.currency,
-                newItem.Date
+                newItem.Date,
+                newItem.message
             ],
             function(err, response) {
                 if (err) {

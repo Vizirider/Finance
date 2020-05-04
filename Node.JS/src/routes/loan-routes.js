@@ -18,7 +18,7 @@ export default function(router) {
     );
 
     router.post(
-        '/loanadd',
+        '/loan',
         middleware.protectedUserRoute,
         loan.create_loan_item
     );

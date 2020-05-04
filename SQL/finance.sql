@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Gép: localhost
--- Létrehozás ideje: 2020. Ápr 21. 14:09
+-- Létrehozás ideje: 2020. Máj 04. 14:16
 -- Kiszolgáló verziója: 5.5.60-MariaDB
 -- PHP verzió: 5.4.16
 
@@ -346,14 +346,15 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `currency` varchar(100) NOT NULL,
   `Date` date NOT NULL,
   `message` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- A tábla adatainak kiíratása `groups`
 --
 
 INSERT INTO `groups` (`groups`, `product_category`, `income_outcome`, `currency`, `Date`, `message`) VALUES
-(1, 18, -77000, 'HUF', '2020-05-10', 'havi albérlet');
+(1, 18, -77000, 'HUF', '2020-05-10', 'havi albérlet'),
+(3, 18, -44000, 'HUF', '2020-05-04', 'rezsi');
 
 -- --------------------------------------------------------
 
@@ -367,14 +368,16 @@ CREATE TABLE IF NOT EXISTS `loan` (
   `amount` int(100) NOT NULL,
   `currency` varchar(100) NOT NULL,
   `Date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `loan`
 --
 
 INSERT INTO `loan` (`loan`, `loan_category`, `amount`, `currency`, `Date`) VALUES
-(1, 1, 10000, 'HUF', '2020-02-03');
+(1, 1, 10000, 'HUF', '2020-02-03'),
+(2, 3, 100000, 'HUF', '2020-05-04'),
+(3, 5, 24000, 'HUF', '2020-05-04');
 
 -- --------------------------------------------------------
 
@@ -419,7 +422,7 @@ CREATE TABLE IF NOT EXISTS `planning` (
 --
 
 INSERT INTO `planning` (`currency`, `salary`, `fix_outcome`, `cost`, `long_term`, `short_term`) VALUES
-('HUF', 250000, 100000, 50000, 20, 80);
+('HUF', 244000, 100000, 40000, 22, 88);
 
 -- --------------------------------------------------------
 
@@ -458,19 +461,18 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `currency` varchar(100) NOT NULL,
   `Date` date NOT NULL,
   `message` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `transaction`
 --
 
 INSERT INTO `transaction` (`transaction`, `product_category`, `income_outcome`, `currency`, `Date`, `message`) VALUES
-(1, 1, 1500, 'HUF', '2019-10-13', NULL),
+(1, 1, 1500, 'HUF', '2019-10-13', ''),
 (2, 2, -20000, 'HUF', '2019-10-02', 'Programozás'),
-(3, 3, 7600, 'HUF', '2019-10-22', NULL),
-(4, 1, -4400, 'HUF', '2019-10-22', NULL),
-(5, 1, 12500, 'HUF', '2020-02-02', NULL),
-(6, 19, 250000, 'HUF', '2020-04-01', 'Munkahely Kft.');
+(6, 19, 250000, 'HUF', '2020-04-01', 'Munkahely Kft.'),
+(25, 1, 1200, 'HUF', '2020-05-04', 'ebed'),
+(28, 1, 1000, 'HUF', '2020-05-04', 'vacsora');
 
 -- --------------------------------------------------------
 
@@ -586,12 +588,12 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT a táblához `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `groups` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `groups` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT a táblához `loan`
 --
 ALTER TABLE `loan`
-  MODIFY `loan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `loan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT a táblához `loancategory`
 --
@@ -606,7 +608,7 @@ ALTER TABLE `site`
 -- AUTO_INCREMENT a táblához `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `transaction` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT a táblához `user`
 --

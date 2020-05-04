@@ -55,7 +55,7 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
         setContentView(R.layout.activity_transaction_add);
 
         final EditText amount = findViewById(R.id.sellerEditText);
-        final Spinner category = findViewById(R.id.categorySpinner);
+        final Spinner category = findViewById(R.id.categorytransactionSpinner);
         final Spinner currency = findViewById(R.id.categorySpinner2);
         final TextView validFrom = findViewById(R.id.DateTextView);
         final Button resetFromDateButton = findViewById(R.id.resetDateButton);
@@ -99,9 +99,10 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
             Integer selectedCategory;
             String selectedCurrency;
 
-                selectedCategory = category.getSelectedItemPosition();
+
+                selectedCategory = category.getSelectedItemPosition() + 1;
                 selectedCurrency = categoriesStringArray[currency.getSelectedItemPosition()];
-                createCatalogueItem(selectedCategory, amount.getText().toString(), selectedCurrency, validFrom.toString(), message.toString());
+                createCatalogueItem(selectedCategory, amount.getText().toString(), selectedCurrency, validFrom.getText().toString(), message.getText().toString());
         });
     }
 
@@ -120,15 +121,15 @@ public class TransactionAddActivity extends AppCompatActivity implements Transac
         String token = settings.getString("token", "");
         String bearerToken = getString(R.string.bearer_token) + " " + token;
 
-                            compositeDisposable.add(myAPI.createTransaction(token, category, amount, currency, validFrom)
+                            compositeDisposable.add(myAPI.createTransaction(token, category, amount, currency, validFrom, message)
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(response -> {
-                                       /* if (response.code() >= 200 && response.code() < 300){
+                                        if (response.code() >= 200 && response.code() < 300){
                                             Toast.makeText(TransactionAddActivity.this, "TransactionItem added successfully!", Toast.LENGTH_SHORT).show();
                                         } else {
                                             Toast.makeText(TransactionAddActivity.this, "" + response.code(), Toast.LENGTH_SHORT).show();
-                                        } */
+                                        }
                                     }));
     }
 }

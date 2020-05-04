@@ -91,8 +91,6 @@ public class LoanActivity extends AppCompatActivity implements LoanRecycleViewAd
         myAPI = retrofit.create(FinanceBackend.class);
         final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(LoanActivity.this);
 
-        final TransactionItem transactionItem = gson.fromJson(settings.getString("loan","{}"), TransactionItem.class);
-
         // Initialize GUI elements
         final ArrayList<TextView> filterTextArrayList = new ArrayList<>();
         filterTextArrayList.add(findViewById(R.id.filterTextView1));

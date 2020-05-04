@@ -65,10 +65,11 @@ public interface FinanceBackend {
     @FormUrlEncoded
     @POST("/api/v1/transaction")
     Observable<Response<JsonObject>> createTransaction(@Header("Authorization") String token,
-                                                       @Field("product_category") Integer category,
-                                                       @Field("amount") String income_outcome,
+                                                       @Field("product_category") Integer product_category,
+                                                       @Field("income_outcome") String income_outcome,
                                                        @Field("currency") String currency,
-                                                       @Field("Date") String Date);
+                                                       @Field("Date") String Date,
+                                                       @Field("message") String message);
     @GET("/api/v1/groups")
     Observable<Response<JsonObject>> getGroups(@Header("Authorization") String token );
 
@@ -76,9 +77,10 @@ public interface FinanceBackend {
     @POST("/api/v1/groups")
     Observable<Response<JsonObject>> createGroups(@Header("Authorization") String token,
                                                        @Field("product_category") Integer category,
-                                                       @Field("amount") String income_outcome,
+                                                       @Field("income_outcome") String income_outcome,
                                                        @Field("currency") String currency,
-                                                       @Field("Date") String Date);
+                                                       @Field("Date") String Date,
+                                                       @Field("message") String message);
 
     @GET("/api/v1/planning")
     Observable<Response<JsonObject>> getPlanning(@Header("Authorization") String token );
@@ -103,8 +105,8 @@ public interface FinanceBackend {
     @FormUrlEncoded
     @POST("/api/v1/loan")
     Observable<Response<JsonObject>> createLoan(@Header("Authorization") String token,
-                                                       @Field("product_category") Integer category,
-                                                       @Field("amount") String income_outcome,
+                                                       @Field("loan_category") Integer loan_category,
+                                                       @Field("amount") String amount,
                                                        @Field("currency") String currency,
                                                        @Field("Date") String Date);
 

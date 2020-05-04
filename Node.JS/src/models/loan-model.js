@@ -7,7 +7,7 @@ const INNER_JOIN_QUERY_PART = `FROM loan INNER JOIN loancategory ON loan.loan_ca
 
 export default class Loan {
     constructor(loanItem) {
-        this.product_category = loanItem.product_category;
+        this.loan_category = loanItem.loan_category;
         this.amount = loanItem.amount;
         this.currency = loanItem.currency;
         this.Date = new Date(loanItem.Date);
@@ -46,10 +46,10 @@ export default class Loan {
 
     static addLoanItem(newItem, res) {
         conn.query(
-            'INSERT INTO `loan` (`product_category`, `amount`, `currency`, `Date`) ' +
+            'INSERT INTO `loan` (`loan_category`, `amount`, `currency`, `Date`) ' +
                 'VALUES (?, ?, ?, ?)',
             [
-                newItem.product_category,
+                newItem.loan_category,
                 newItem.amount,
                 newItem.currency,
                 newItem.Date

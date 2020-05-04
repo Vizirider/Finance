@@ -11,6 +11,7 @@ export default class Transaction {
         this.income_outcome = transactionItem.income_outcome;
         this.currency = transactionItem.currency;
         this.Date = new Date(transactionItem.Date);
+        this.message = transactionItem.message;
     }
 
     static getAllTransactionItems(res) {
@@ -43,16 +44,18 @@ export default class Transaction {
             }
         );
     }
+    
 
     static addTransactionItem(newItem, res) {
         conn.query(
             'INSERT INTO `transaction` (`product_category`, `income_outcome`, `currency`, `Date`, `message`) ' +
-                'VALUES (?, ?, ?, ?)',
+                'VALUES (?, ?, ?, ?, ?)',
             [
                 newItem.product_category,
                 newItem.income_outcome,
                 newItem.currency,
-                newItem.Date
+                newItem.Date,
+                newItem.message,
             ],
             function(err, response) {
                 if (err) {
